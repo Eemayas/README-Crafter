@@ -1,6 +1,9 @@
+/** @format */
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { CustomSpinner } from "@/components/Modals/Modals";
+import ReduxProvider from "@/lib/context/ReduxProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +19,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <ReduxProvider>
+        <body className={inter.className}>
+          <CustomSpinner />
+          {children}
+        </body>
+      </ReduxProvider>
     </html>
   );
 }
