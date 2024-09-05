@@ -8,17 +8,17 @@ import useLocalStorage from "@/lib/hooks/useLocalStorage";
 const SectionHeader: React.FC<{
   text: string;
   subtext: string;
-  clasName?: string;
-}> = ({ text, subtext, clasName }) => {
+  className?: string;
+}> = ({ text, subtext, className }) => {
   const [repoInfo, setRepoInfo] = useLocalStorage("repoInfo", {
     repoName: "",
     repoLink: "",
   });
-  localStorage.getItem("repoInfo")
+  localStorage.getItem("repoInfo");
   return (
     <>
       <h1
-        className={`text-2xl px-4 md:text-4xl lg:text-5xl font-bold text-black dark:text-white max-w-4xl leading-relaxed lg:leading-snug text-center mx-auto ${clasName}`}
+        className={`mx-auto max-w-4xl px-4 text-center text-2xl font-bold leading-relaxed text-black dark:text-white md:text-4xl lg:text-5xl lg:leading-snug ${className}`}
       >
         <Highlight className="text-black dark:text-white">{text}</Highlight>{" "}
       </h1>
@@ -26,7 +26,7 @@ const SectionHeader: React.FC<{
         Generate the {subtext} of{" "}
         <LinkPreview
           url={repoInfo.repoLink}
-          className="font-bold bg-clip-text text-transparent bg-gradient-to-br from-purple-500 to-pink-500"
+          className="bg-gradient-to-br from-purple-500 to-pink-500 bg-clip-text font-bold text-transparent"
         >
           {repoInfo.repoName}
         </LinkPreview>

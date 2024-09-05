@@ -10,19 +10,19 @@ export const CustomSpinner = () => {
   return (
     <>
       <div
-        className={`justify-center items-center  overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none backdrop-blur-sm ${
+        className={`fixed inset-0 z-50 items-center justify-center overflow-y-auto overflow-x-hidden outline-none backdrop-blur-sm focus:outline-none ${
           modalInfos.spinner.isShow ? "flex" : "hidden"
         } `}
       >
-        <div className="relative w-auto my-6 mx-auto max-w-3xl">
-          <div className="h-24 w-24 rounded-full border-t-8 border-b-8 border-gray-200"></div>
-          <div className="absolute top-0 left-0 h-24 w-24 rounded-full border-t-8 border-b-8 border-blue-500 animate-spin"></div>
+        <div className="relative mx-auto my-6 w-auto max-w-3xl">
+          <div className="h-24 w-24 rounded-full border-b-8 border-t-8 border-gray-200"></div>
+          <div className="absolute left-0 top-0 h-24 w-24 animate-spin rounded-full border-b-8 border-t-8 border-blue-500"></div>
         </div>
       </div>
       <div
         className={`${
           modalInfos.spinner.isShow ? "" : "hidden"
-        } opacity-25 fixed inset-0 z-40 bg-black`}
+        } fixed inset-0 z-40 bg-black opacity-25`}
       ></div>
     </>
   );

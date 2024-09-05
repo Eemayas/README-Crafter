@@ -1,11 +1,8 @@
 /** @format */
 
+/** @format */
+
 // ### Ignore List
-
-// This section defines the list of directories, files, and file extensions to be ignored when processing the repository.
-
-// List of file extensions to be ignored when constructing folder structure,
-// as they are unlikely to contain relevant information.
 const ignoreListFolderStructure: string[] = [
   // General
   ".git", // Git repository metadata
@@ -205,84 +202,84 @@ const apiIgnoreExtensions: string[] = [
 // Additional specific ignores for API references
 const specificIgnoresAPI: string[] = [".gitignore", ".config.js", ".config.ts"];
 
-// ### Project Icons
-// This section defines the map of the project type and project icons
-interface ProjectIcons {
-  [key: string]: {
-    icon: string;
-  };
-}
-
-const projectIcons: ProjectIcons = {
-  ecommerce: {
-    icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/shopping-basket-2.png",
-  },
-  banking: { icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/bank.png" },
-  school: { icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/school.png" },
-  education: {
-    icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/graduation-cap.png",
-  },
-  work: {
-    icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/briefcase.png",
-  },
-  healthcare: {
-    icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/hospital-room.png",
-  },
-  real_estate: {
-    icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/home.png",
-  },
-  travel: {
-    icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/passport.png",
-  },
-  social_media: {
-    icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/share.png",
-  },
-  fitness: {
-    icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/dumbbell.png",
-  },
-  news: { icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/news.png" },
-  entertainment: {
-    icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/clapperboard.png",
-  },
-  food_delivery: {
-    icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/food-delivery.png",
-  },
-  finance: { icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/money.png" },
-  transportation: {
-    icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/bus.png",
-  },
-  hospitality: {
-    icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/hotel.png",
-  },
-  music: {
-    icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/musical-notes.png",
-  },
-  gaming: {
-    icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/controller.png",
-  },
-  environment: {
-    icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/earth-planet.png",
-  },
-  nonprofit: {
-    icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/charity.png",
-  },
-  photography: {
-    icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/camera.png",
-  },
-  sports: {
-    icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/soccer-ball.png",
-  },
-  fashion: { icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/dress.png" },
-  automotive: {
-    icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/car.png",
-  },
-};
-
 export {
   ignoreListFolderStructure,
   ignoreListExtensions,
   apiAdditionalExtensions,
   apiIgnoreExtensions,
   specificIgnoresAPI,
-  projectIcons,
+  // projectIcons,
 };
+
+// // ### Project Icons
+// // This section defines the map of the project type and project icons
+// interface ProjectIcons {
+//   [key: string]: {
+//     icon: string;
+//   };
+// }
+
+// const projectIcons: ProjectIcons = {
+//   ecommerce: {
+//     icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/shopping-basket-2.png",
+//   },
+//   banking: { icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/bank.png" },
+//   school: { icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/school.png" },
+//   education: {
+//     icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/graduation-cap.png",
+//   },
+//   work: {
+//     icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/briefcase.png",
+//   },
+//   healthcare: {
+//     icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/hospital-room.png",
+//   },
+//   real_estate: {
+//     icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/home.png",
+//   },
+//   travel: {
+//     icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/passport.png",
+//   },
+//   social_media: {
+//     icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/share.png",
+//   },
+//   fitness: {
+//     icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/dumbbell.png",
+//   },
+//   news: { icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/news.png" },
+//   entertainment: {
+//     icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/clapperboard.png",
+//   },
+//   food_delivery: {
+//     icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/food-delivery.png",
+//   },
+//   finance: { icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/money.png" },
+//   transportation: {
+//     icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/bus.png",
+//   },
+//   hospitality: {
+//     icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/hotel.png",
+//   },
+//   music: {
+//     icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/musical-notes.png",
+//   },
+//   gaming: {
+//     icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/controller.png",
+//   },
+//   environment: {
+//     icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/earth-planet.png",
+//   },
+//   nonprofit: {
+//     icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/charity.png",
+//   },
+//   photography: {
+//     icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/camera.png",
+//   },
+//   sports: {
+//     icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/soccer-ball.png",
+//   },
+//   fashion: { icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/dress.png" },
+//   automotive: {
+//     icon: "https://img.icons8.com/nolan/512/1A6DFF/C822FF/car.png",
+//   },
+// };

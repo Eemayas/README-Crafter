@@ -22,13 +22,13 @@ export const useRepoData = () => {
   const checkRepoExistence = async (url: string): Promise<boolean> => {
     try {
       const repoApiUrl = "https://api.github.com/repos/".concat(
-        url.split("/").slice(3).join("/")
+        url.split("/").slice(3).join("/"),
       );
       const response = await fetch(repoApiUrl);
 
       if (!response.ok) {
         throw new Error(
-          "GitHub repository does not exist or Error fetching repository data"
+          "GitHub repository does not exist or Error fetching repository data",
         );
       }
 
@@ -37,7 +37,7 @@ export const useRepoData = () => {
       return true;
     } catch (error) {
       setErrorMessage(
-        "GitHub repository does not exist or Error fetching repository data"
+        "GitHub repository does not exist or Error fetching repository data",
       );
       return false;
     }
@@ -46,10 +46,10 @@ export const useRepoData = () => {
   const fetchData = async (inputRepositoryUrl: string) => {
     try {
       const metadataUrl = `http://127.0.0.1:5000/github_metadata?repository_url=${encodeURIComponent(
-        inputRepositoryUrl
+        inputRepositoryUrl,
       )}`;
       const cloneRepUrl = `http://127.0.0.1:5000/clone_repo?repository_url=${encodeURIComponent(
-        inputRepositoryUrl
+        inputRepositoryUrl,
       )}`;
 
       const metadataResponse = await fetch(metadataUrl);
@@ -69,7 +69,7 @@ export const useRepoData = () => {
         setRepo({
           repoName: metadataJson.metadata.name,
           repoLink: metadataJson.metadata.clone_url,
-        })
+        }),
       );
     } catch (error) {
       console.error("Error fetching data:", error);

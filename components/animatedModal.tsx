@@ -1,6 +1,3 @@
-
-
-
 import React, { useState } from "react";
 import {
   Modal,
@@ -68,26 +65,26 @@ export function AnimatedGitHubLinkModal() {
   };
 
   return (
-    <div className="py-10 flex items-center justify-center">
+    <div className="flex items-center justify-center py-10">
       <Modal>
-        <ModalTrigger className="bg-black dark:bg-white dark:text-black text-white flex justify-center group/modal-btn">
-          <span className="group-hover/modal-btn:translate-x-40 text-center transition duration-500">
+        <ModalTrigger className="group/modal-btn flex justify-center bg-black text-white dark:bg-white dark:text-black">
+          <span className="text-center transition duration-500 group-hover/modal-btn:translate-x-40">
             Get Started
           </span>
-          <div className="-translate-x-40 group-hover/modal-btn:translate-x-0 flex items-center justify-center absolute inset-0 transition duration-500 text-white z-20">
+          <div className="absolute inset-0 z-20 flex -translate-x-40 items-center justify-center text-white transition duration-500 group-hover/modal-btn:translate-x-0">
             🔎
           </div>
         </ModalTrigger>
         <ModalBody>
           <ModalContent>
-            <h4 className="text-lg md:text-2xl text-neutral-600 dark:text-neutral-100 font-bold text-center mb-8">
+            <h4 className="mb-8 text-center text-lg font-bold text-neutral-600 dark:text-neutral-100 md:text-2xl">
               Share your{" "}
-              <span className="px-1 py-0.5 rounded-md bg-gray-100 dark:bg-neutral-800 dark:border-neutral-700 border border-gray-200">
+              <span className="rounded-md border border-gray-200 bg-gray-100 px-1 py-0.5 dark:border-neutral-700 dark:bg-neutral-800">
                 GitHub Repo Link
               </span>{" "}
               now!
             </h4>
-            <div className="flex justify-center items-center">
+            <div className="flex items-center justify-center">
               {images.map((image, idx) => (
                 <motion.div
                   key={"images" + idx}
@@ -104,19 +101,19 @@ export function AnimatedGitHubLinkModal() {
                     rotate: 0,
                     zIndex: 100,
                   }}
-                  className="rounded-xl -mr-4 mt-4 p-1 bg-white dark:bg-neutral-800 dark:border-neutral-700 border border-neutral-100 flex-shrink-0 overflow-hidden"
+                  className="-mr-4 mt-4 flex-shrink-0 overflow-hidden rounded-xl border border-neutral-100 bg-white p-1 dark:border-neutral-700 dark:bg-neutral-800"
                 >
                   <Image
                     src={image}
                     alt="github images"
                     width="500"
                     height="500"
-                    className="rounded-lg h-20 w-20 md:h-40 md:w-40 object-cover flex-shrink-0"
+                    className="h-20 w-20 flex-shrink-0 rounded-lg object-cover md:h-40 md:w-40"
                   />
                 </motion.div>
               ))}
             </div>
-            <div className="py-5 md:py-10 flex flex-wrap gap-x-4 gap-y-6 items-start justify-start max-w-sm mx-auto">
+            <div className="mx-auto flex max-w-sm flex-wrap items-start justify-start gap-x-4 gap-y-6 py-5 md:py-10">
               <form className="my-8" onSubmit={handleSubmit}>
                 <LabelInputContainer className="mb-4">
                   <Label htmlFor="email">GitHub Repo Link</Label>
@@ -127,7 +124,7 @@ export function AnimatedGitHubLinkModal() {
                   />
                 </LabelInputContainer>
                 <button
-                  className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
+                  className="group/btn relative block h-10 w-full rounded-md bg-gradient-to-br from-black to-neutral-600 font-medium text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:bg-zinc-800 dark:from-zinc-900 dark:to-zinc-900 dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
                   type="submit"
                 >
                   Get going &rarr;
@@ -147,8 +144,8 @@ export function AnimatedGitHubLinkModal() {
 const BottomGradient = () => {
   return (
     <>
-      <span className="group-hover/btn:opacity-100 block transition duration-500 opacity-0 absolute h-px w-full -bottom-px inset-x-0 bg-gradient-to-r from-transparent via-cyan-500 to-transparent" />
-      <span className="group-hover/btn:opacity-100 blur-sm block transition duration-500 opacity-0 absolute h-px w-1/2 mx-auto -bottom-px inset-x-10 bg-gradient-to-r from-transparent via-indigo-500 to-transparent" />
+      <span className="absolute inset-x-0 -bottom-px block h-px w-full bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-0 transition duration-500 group-hover/btn:opacity-100" />
+      <span className="absolute inset-x-10 -bottom-px mx-auto block h-px w-1/2 bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-0 blur-sm transition duration-500 group-hover/btn:opacity-100" />
     </>
   );
 };
@@ -161,7 +158,7 @@ const LabelInputContainer = ({
   className?: string;
 }) => {
   return (
-    <div className={cn("flex flex-col space-y-2 w-full", className)}>
+    <div className={cn("flex w-full flex-col space-y-2", className)}>
       {children}
     </div>
   );

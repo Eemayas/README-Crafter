@@ -31,10 +31,10 @@ export default function Home() {
       if (repoExists) {
         setErrorMessage("");
         await fetchData(inputRepositoryUrl);
-        router.push("/folder_structure");
+        router.push("/main");
       } else {
         setErrorMessage(
-          "Repository does not exist or there was an error fetching the repository."
+          "Repository does not exist or there was an error fetching the repository.",
         );
       }
     } else {
@@ -46,7 +46,7 @@ export default function Home() {
   return (
     <HeroHighlight containerClassName="items-center">
       <MoveUpFadeAnimation>
-        <h1 className="text-2xl px-4 md:text-4xl lg:text-5xl font-bold text-black dark:text-white max-w-4xl leading-relaxed lg:leading-snug text-center mx-auto">
+        <h1 className="mx-auto max-w-4xl px-4 text-center text-2xl font-bold leading-relaxed text-black dark:text-white md:text-4xl lg:text-5xl lg:leading-snug">
           Create your perfect{" "}
           <Highlight className="text-black dark:text-white">README</Highlight>{" "}
           effortlessly with{" "}
@@ -54,13 +54,13 @@ export default function Home() {
           where simplicity meets customization!
         </h1>
 
-        <h2 className="text-md px-4 md:text-lg lg:text-xl text-neutral-700 dark:text-white max-w-4xl mt-5 leading-relaxed lg:leading-snug text-center mx-auto">
+        <h2 className="mx-auto mt-5 max-w-4xl px-4 text-center text-2xl leading-relaxed text-neutral-700 dark:text-white md:text-lg lg:text-2xl lg:leading-snug">
           Our user-friendly editor lets you easily add and customize all the
           sections you need for your project's README.
         </h2>
         <PhotoGallery />
 
-        <div className="w-full mt-10 flex justify-center">
+        <div className="mt-10 flex w-full justify-center">
           <HomeForm
             inputRepositoryUrl={inputRepositoryUrl}
             setInputRepositoryUrl={setInputRepositoryUrl}

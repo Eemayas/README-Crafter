@@ -14,7 +14,7 @@ const PhotoGallery = () => {
     "https://images.unsplash.com/photo-1489875347897-49f64b51c1f8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   ];
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex items-center justify-center">
       {images.map((image, idx) => (
         <motion.div
           key={"images" + idx}
@@ -31,14 +31,14 @@ const PhotoGallery = () => {
             rotate: 0,
             zIndex: 100,
           }}
-          className="rounded-xl -mr-4 mt-4 p-1 bg-white dark:bg-neutral-800 dark:border-neutral-700 border border-neutral-100 flex-shrink-0 overflow-hidden"
+          className="-mr-4 mt-4 flex-shrink-0 overflow-hidden rounded-xl border border-neutral-100 bg-white p-1 dark:border-neutral-700 dark:bg-neutral-800"
         >
           <Image
             src={image}
             alt="github images"
             width="500"
             height="500"
-            className="rounded-lg h-20 w-20 md:h-40 md:w-40 lg:h-48 lg:w-48 object-cover flex-shrink-0"
+            className="h-20 w-20 flex-shrink-0 rounded-lg object-cover md:h-40 md:w-40 lg:h-48 lg:w-48"
           />
         </motion.div>
       ))}

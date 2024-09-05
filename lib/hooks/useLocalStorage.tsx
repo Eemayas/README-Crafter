@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from "react";
 
-function  useLocalStorage<T>(
+function useLocalStorage<T>(
   key: string,
-  initialValue: T
+  initialValue: T,
 ): [T, React.Dispatch<React.SetStateAction<T>>] {
   const [value, setValue] = useState<T>(() => {
     const storedValue = localStorage.getItem(key);

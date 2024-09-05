@@ -45,7 +45,7 @@ export const showSpinnerAsync = createAsyncThunk<boolean, boolean>(
         resolve(shouldShow);
       }, 1000);
     });
-  }
+  },
 );
 
 const modalSlice = createSlice({
@@ -57,13 +57,13 @@ const modalSlice = createSlice({
     },
     showSuccessModal: (
       state: ModalSliceState,
-      action: PayloadAction<Partial<ModalState>>
+      action: PayloadAction<Partial<ModalState>>,
     ) => {
       state.successModal = { ...state.successModal, ...action.payload };
     },
     showErrorModal: (
       state: ModalSliceState,
-      action: PayloadAction<Partial<ModalState>>
+      action: PayloadAction<Partial<ModalState>>,
     ) => {
       state.errorModal = { ...state.errorModal, ...action.payload };
     },
@@ -71,14 +71,14 @@ const modalSlice = createSlice({
   extraReducers: (builder: {
     addCase: (
       arg0: any,
-      arg1: (state: ModalSliceState, action: PayloadAction<boolean>) => void
+      arg1: (state: ModalSliceState, action: PayloadAction<boolean>) => void,
     ) => void;
   }) => {
     builder.addCase(
       showSpinnerAsync.fulfilled,
       (state: ModalSliceState, action: PayloadAction<boolean>) => {
         state.spinner.isShow = action.payload;
-      }
+      },
     );
   },
 });

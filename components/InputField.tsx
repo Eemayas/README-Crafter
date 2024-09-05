@@ -14,7 +14,7 @@ const InputField = ({
   <div>
     <label
       htmlFor="github-repo-link"
-      className={`block mb-2 text-sm font-medium ${
+      className={`mb-2 block text-sm font-medium ${
         errorMessage
           ? "text-red-700 dark:text-red-500"
           : "text-gray-900 dark:text-white"
@@ -31,7 +31,7 @@ const InputField = ({
         errorMessage
           ? "border-red-500 text-red-900 placeholder-red-700"
           : "border-gray-300 text-gray-900 placeholder-gray-500"
-      } text-sm rounded-lg focus:ring-${
+      } rounded-lg text-sm focus:ring-${
         errorMessage ? "red-500" : "blue-500"
       } dark:bg-gray-700 focus:border-${
         errorMessage ? "red-500" : "blue-500"
