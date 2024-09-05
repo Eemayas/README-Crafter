@@ -4,6 +4,8 @@ import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
 import { motion } from "framer-motion";
 import React from "react";
 import Image from "next/image";
+import MoveUpFadeAnimation from "@/components/MoveUpFadeAnimation";
+import { Navbar } from "@/components/NavbarDemo";
 const GithubRepo = () => {
   const images = [
     "https://images.unsplash.com/photo-1556075798-4825dfaaf498?q=80&w=2076&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -14,24 +16,11 @@ const GithubRepo = () => {
   ];
   return (
     <HeroHighlight>
-      <motion.div
-        initial={{
-          opacity: 0,
-          y: 20,
-        }}
-        animate={{
-          opacity: 1,
-          y: [20, -5, 0],
-        }}
-        transition={{
-          duration: 0.5,
-          ease: [0.4, 0.0, 0.2, 1],
-        }}
-      >
-        <h1 className="text-2xl px-4 md:text-4xl lg:text-5xl font-bold text-black dark:text-white max-w-4xl leading-relaxed lg:leading-snug text-center mx-auto ">
-          Share your{" "}
+      <Navbar />
+      <MoveUpFadeAnimation>
+        <h1 className="text-2xl px-4 md:text-4xl lg:text-5xl font-bold text-black dark:text-white max-w-4xl leading-relaxed lg:leading-snug text-center mx-auto my-40 ">
           <Highlight className="text-black dark:text-white">
-            GitHub Repo Link
+            Summary Generation
           </Highlight>{" "}
         </h1>
 
@@ -69,7 +58,7 @@ const GithubRepo = () => {
             Get Started &rarr;
           </button>
         </div>
-      </motion.div>
+      </MoveUpFadeAnimation>
     </HeroHighlight>
   );
 };

@@ -9,7 +9,7 @@ const InputField = ({
   label: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  errorMessage: string;
+  errorMessage?: string;
 }) => (
   <div>
     <label

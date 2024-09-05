@@ -3,16 +3,17 @@
 "use client";
 
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
 import { showSpinner } from "@/components/Modals/store/ModalReducer";
 import MoveUpFadeAnimation from "@/components/MoveUpFadeAnimation";
 import PhotoGallery from "./components/PhotoGallery";
 import HomeForm from "./components/HomeForm";
 import { useRepoData } from "./hooks/useRepoData";
 import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
+import { useRouter } from "next/navigation";
+import store from "../store";
 
 export default function Home() {
-  const dispatch = useDispatch();
+  const router = useRouter();
   const {
     errorMessage,
     validateGitHubLink,
@@ -22,17 +23,15 @@ export default function Home() {
   } = useRepoData();
   const [inputRepositoryUrl, setInputRepositoryUrl] = useState("");
 
-  const showSpinnerModal = () => dispatch(showSpinner(true));
-  const hideSpinnerModal = () => dispatch(showSpinner(false));
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    showSpinnerModal();
+    store.dispatch(showSpinner(true));
     e.preventDefault();
     if (validateGitHubLink(inputRepositoryUrl)) {
       const repoExists = await checkRepoExistence(inputRepositoryUrl);
       if (repoExists) {
         setErrorMessage("");
-        fetchData(inputRepositoryUrl);
+        await fetchData(inputRepositoryUrl);
+        router.push("/folder_structure");
       } else {
         setErrorMessage(
           "Repository does not exist or there was an error fetching the repository."
@@ -41,11 +40,11 @@ export default function Home() {
     } else {
       setErrorMessage("Invalid GitHub link");
     }
-    hideSpinnerModal();
+    store.dispatch(showSpinner(false));
   };
 
   return (
-    <HeroHighlight>
+    <HeroHighlight containerClassName="items-center">
       <MoveUpFadeAnimation>
         <h1 className="text-2xl px-4 md:text-4xl lg:text-5xl font-bold text-black dark:text-white max-w-4xl leading-relaxed lg:leading-snug text-center mx-auto">
           Create your perfect{" "}
