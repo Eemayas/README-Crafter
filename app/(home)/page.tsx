@@ -53,13 +53,13 @@ export default function Home() {
           <Highlight className="text-black dark:text-white">Ollama</Highlight> —
           where simplicity meets customization!
         </h1>
-
-        <h2 className="mx-auto mt-5 max-w-4xl px-4 text-center text-2xl leading-relaxed text-neutral-700 dark:text-white md:text-lg lg:text-2xl lg:leading-snug">
+        <h2 className="mx-auto mt-5 max-w-4xl px-4 text-center text-lg leading-relaxed text-neutral-700 dark:text-white md:text-xl lg:text-2xl lg:leading-snug">
           Our user-friendly editor lets you easily add and customize all the
           sections you need for your project's README.
-        </h2>
+        </h2>{" "}
+        <hr className="my-3 h-[2px] border-0 bg-gray-300 dark:bg-gray-600" />
         <PhotoGallery />
-
+        <hr className="my-8 h-[2px] border-0 bg-gray-300 dark:bg-gray-600" />
         <div className="mt-10 flex w-full justify-center">
           <HomeForm
             inputRepositoryUrl={inputRepositoryUrl}

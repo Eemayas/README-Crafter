@@ -38,7 +38,7 @@ const PhotoGallery = () => {
             alt="github images"
             width="500"
             height="500"
-            className="h-20 w-20 flex-shrink-0 rounded-lg object-cover md:h-40 md:w-40 lg:h-48 lg:w-48"
+            className="sm:h-38 sm:w-38 h-20 w-20 flex-shrink-0 rounded-lg object-cover md:h-40 md:w-40 lg:h-48 lg:w-48"
           />
         </motion.div>
       ))}

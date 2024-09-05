@@ -19,7 +19,7 @@ const HomeForm: React.FC<HomeFormProps> = ({
   handleSubmit,
 }) => (
   <form
-    className="flex w-[30rem] flex-col justify-center gap-3"
+    className="flex w-full flex-col justify-center gap-3 px-8 sm:w-[30rem]"
     onSubmit={handleSubmit}
   >
     <InputField

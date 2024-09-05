@@ -50,11 +50,12 @@ const SummaryGenerationSection: React.FC = () => {
           text="Summary Generation 📝"
           subtext="summary"
         />
+        "w-full flex-col justify-center gap-3 px-8 sm:w-[30rem]"
         <div className="mt-10 flex w-full justify-center px-20">
           <ActionButton
-            className="max-w-80"
+            className="w-full px-4 sm:w-[30rem]"
             onClick={fetchSummaryData}
-            text="Generate Header &rarr;"
+            text="Generate summary &rarr;"
           />
         </div>
         <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700" />
@@ -64,7 +65,7 @@ const SummaryGenerationSection: React.FC = () => {
             visible={true}
             className="min-h-screen"
           />
-        </div>
+        </div>{" "}
       </MoveUpFadeAnimation>
       {loading && (
         <div className="flex h-[60vh] w-full items-center justify-center">

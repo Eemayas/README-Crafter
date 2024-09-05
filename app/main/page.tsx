@@ -29,7 +29,7 @@ const MainPage = () => {
   return (
     <>
       <HeroHighlight>
-        <Navbar />
+        {/* <Navbar /> */}
         <SummaryGenerationSection />
         <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700"></hr>
         <HeaderSection />

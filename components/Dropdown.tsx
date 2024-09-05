@@ -27,7 +27,7 @@ const DropdownField: React.FC<DropdownFieldProps> = ({
     <div className={`${className}`}>
       <label
         htmlFor="dropdown"
-        className={`mb-2 block text-sm font-medium text-gray-900 dark:text-white`}
+        className={`mb-2 block text-lg font-medium text-gray-900 dark:text-white`}
       >
         {label}
       </label>

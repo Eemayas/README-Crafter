@@ -14,10 +14,10 @@ const InputField = ({
   <div>
     <label
       htmlFor="github-repo-link"
-      className={`mb-2 block text-sm font-medium ${
+      className={`mb-2 block text-lg font-medium ${
         errorMessage
           ? "text-red-700 dark:text-red-500"
-          : "text-gray-900 dark:text-white"
+          : "text-neutral-700 dark:text-white"
       }`}
     >
       {label}

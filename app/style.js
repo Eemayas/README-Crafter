@@ -1,4 +1,4 @@
 /** @format */
 
 export const subTextStyle =
-  "text-md px-4 md:text-lg lg:text-xl text-neutral-700 dark:text-white max-w-4xl mt-5 leading-relaxed lg:leading-snug text-center mx-auto";
+  "mx-auto mt-5 max-w-4xl px-4 text-center text-lg leading-relaxed text-neutral-700 dark:text-white md:text-xl lg:text-2xl lg:leading-snug";
