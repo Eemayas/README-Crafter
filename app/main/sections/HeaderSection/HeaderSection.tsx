@@ -65,6 +65,7 @@ const HeaderSection = () => {
         value={projectHeaderValue}
         visible={true}
         className="h-[50vh]"
+        localStorageName="headerSection"
       />
     </MoveUpFadeAnimation>
   );
