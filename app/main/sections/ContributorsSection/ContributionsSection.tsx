@@ -5,12 +5,7 @@ import useLocalStorage from "@/lib/hooks/useLocalStorage";
 import SectionHeader from "../../components/SectionHeader";
 import ActionButton from "@/components/ActionButton";
 import { useFetchContributorsData } from "./hooks/useFetchContributorsData";
-import dynamic from "next/dynamic";
-
-const MarkdownEditor = dynamic(
-  () => import("@uiw/react-markdown-editor").then((mod) => mod.default),
-  { ssr: false },
-);
+import MarkDownEditor from "@/components/MarkDownEditor";
 
 const ContributorsSection: React.FC = () => {
   const [repoInfo] = useLocalStorage("repoInfo", {
@@ -35,13 +30,11 @@ const ContributorsSection: React.FC = () => {
           />
         </div>
         <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700"></hr>
-        <div className="container mb-10 w-[1500px]">
-          <MarkdownEditor
-            value={contributorsMarkdownValue}
-            visible={true}
-            className="h-[50vh]"
-          />
-        </div>
+        <MarkDownEditor
+          value={contributorsMarkdownValue}
+          visible={true}
+          className="h-[50vh]"
+        />
       </MoveUpFadeAnimation>
     </>
   );

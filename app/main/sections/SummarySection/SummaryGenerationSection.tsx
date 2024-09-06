@@ -12,15 +12,10 @@ import { useFetchSummaryData } from "./hooks/useFetchSummaryData";
 import MoveUpFadeAnimation from "@/components/MoveUpFadeAnimation";
 import SectionHeader from "../../components/SectionHeader";
 import ActionButton from "@/components/ActionButton";
-import dynamic from "next/dynamic";
 import { MultiStepLoader as Loader } from "@/components/ui/multi-step-loader";
 import { IconSquareRoundedX } from "@tabler/icons-react";
 import { incorrectInitialFileDescriptions } from "./constant";
-
-const MarkdownEditor = dynamic(
-  () => import("@uiw/react-markdown-editor").then((mod) => mod.default),
-  { ssr: false },
-);
+import MarkDownEditor from "@/components/MarkDownEditor";
 
 const SummaryGenerationSection: React.FC = () => {
   const [folderStructureDict] = useLocalStorage("folderStructureDict", {});
@@ -46,11 +41,10 @@ const SummaryGenerationSection: React.FC = () => {
     <>
       <MoveUpFadeAnimation>
         <SectionHeader
-          className="mt-52"
+          className="pt-52"
           text="Summary Generation 📝"
           subtext="summary"
         />
-        "w-full flex-col justify-center gap-3 px-8 sm:w-[30rem]"
         <div className="mt-10 flex w-full justify-center px-20">
           <ActionButton
             className="w-full px-4 sm:w-[30rem]"
@@ -59,13 +53,11 @@ const SummaryGenerationSection: React.FC = () => {
           />
         </div>
         <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700" />
-        <div className="container mb-10 w-[1500px]">
-          <MarkdownEditor
-            value={markdownValue}
-            visible={true}
-            className="min-h-screen"
-          />
-        </div>{" "}
+        <MarkDownEditor
+          value={markdownValue}
+          visible={true}
+          className="min-h-screen"
+        />
       </MoveUpFadeAnimation>
       {loading && (
         <div className="flex h-[60vh] w-full items-center justify-center">

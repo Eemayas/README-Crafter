@@ -10,13 +10,8 @@ import DropdownField from "@/components/Dropdown";
 import InputField from "@/components/InputField";
 import { projectTypeList } from "./constants";
 import SectionHeader from "../../components/SectionHeader";
-import dynamic from "next/dynamic";
 import { useFetchHeaderData } from "./hooks/useFetchHeaderData";
-
-const MarkdownEditor = dynamic(
-  () => import("@uiw/react-markdown-editor").then((mod) => mod.default),
-  { ssr: false },
-);
+import MarkDownEditor from "@/components/MarkDownEditor";
 
 const HeaderSection = () => {
   const [repoInfo] = useLocalStorage("repoInfo", {
@@ -66,13 +61,11 @@ const HeaderSection = () => {
         />
       </div>
       <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700" />
-      <div className="container mb-10 w-[1500px]">
-        <MarkdownEditor
-          value={projectHeaderValue}
-          visible={true}
-          className="h-[50vh]"
-        />
-      </div>
+      <MarkDownEditor
+        value={projectHeaderValue}
+        visible={true}
+        className="h-[50vh]"
+      />
     </MoveUpFadeAnimation>
   );
 };
