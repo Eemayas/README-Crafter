@@ -2,7 +2,6 @@
 
 import ActionButton from "@/components/ActionButton";
 import MoveUpFadeAnimation from "@/components/MoveUpFadeAnimation";
-import useLocalStorage from "@/lib/hooks/useLocalStorage";
 import { useFetchContributingGuideData } from "./hooks/useFetchContributingGuideData";
 import SectionHeader from "../../components/SectionHeader";
 import MarkDownEditor from "@/components/MarkDownEditor";
