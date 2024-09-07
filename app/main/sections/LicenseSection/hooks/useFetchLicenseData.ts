@@ -1,23 +1,23 @@
 /** @format */
 
-import store from "@/app/store";
+import store, { RootState } from "@/app/store";
 import { showSpinner } from "@/components/Modals/store/ModalReducer";
 import { getLicenseUrl } from "@/lib/constants/apiEndpoints";
-import { useState, useCallback } from "react";
-import { initialLicenseMkdr } from "../constant";
+import { useCallback } from "react";
 import useLocalStorage from "@/lib/hooks/useLocalStorage";
-import { licenseLS, repoInfoLS } from "@/lib/constants/localStorageNames";
+import { repoInfoLS } from "@/lib/constants/localStorageNames";
+import { useSelector } from "react-redux";
+import { setLicense } from "../store/licenseReducer";
 
 export function useFetchLicenseData() {
   const [{ repoLink }] = useLocalStorage(repoInfoLS, {
     repoName: "",
     repoLink: "",
   });
-  const [licenseMarkdownValue, setLicenseMarkdownValue] = useLocalStorage(
-    licenseLS,
-    initialLicenseMkdr,
-  );
 
+  const licenseMarkdownValue = useSelector(
+    (state: RootState) => state.licenseReducer,
+  );
   const fetchLicenseData = useCallback(async () => {
     store.dispatch(showSpinner(true));
 
@@ -27,7 +27,7 @@ export function useFetchLicenseData() {
       const response = await fetch(licenseUrl);
       const data = await response.json();
 
-      setLicenseMarkdownValue(data.license_markdown || licenseMarkdownValue);
+      store.dispatch(setLicense(data.license_markdown));
     } catch (error) {
       console.error("Error fetching data:", error);
     }

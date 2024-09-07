@@ -28,6 +28,7 @@ const FolderStructureSection = () => {
       <MarkDownEditor
         value={folderStructureMarkdownValue}
         visible={true}
+        className="h-[50vh]"
         onChange={(value) => {
           store.dispatch(setFolderstructure(value));
         }}

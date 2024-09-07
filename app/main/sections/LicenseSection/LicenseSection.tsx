@@ -3,9 +3,10 @@
 import MoveUpFadeAnimation from "@/components/MoveUpFadeAnimation";
 import SectionHeader from "../../components/SectionHeader";
 import ActionButton from "@/components/ActionButton";
-import useLocalStorage from "@/lib/hooks/useLocalStorage";
 import { useFetchLicenseData } from "./hooks/useFetchLicenseData";
 import MarkDownEditor from "@/components/MarkDownEditor";
+import store from "@/app/store";
+import { setLicense } from "./store/licenseReducer";
 
 const LicenseSection = () => {
   const { licenseMarkdownValue, fetchLicenseData } = useFetchLicenseData();
@@ -28,7 +29,7 @@ const LicenseSection = () => {
         value={licenseMarkdownValue}
         visible={true}
         className="h-[50vh]"
-        localStorageName="license"
+        onChange={(value) => store.dispatch(setLicense(value))}
       />
     </MoveUpFadeAnimation>
   );
