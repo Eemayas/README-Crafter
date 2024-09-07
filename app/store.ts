@@ -4,11 +4,13 @@ import { configureStore } from "@reduxjs/toolkit";
 import modalReducer from "@/components/Modals/store/ModalReducer";
 import repoReducer from "@/app/(home)/store/repoReducer";
 import contributingGuideReducer from "@/app/main/sections/ContributingGuideSection/store/ContributingGuideReducer";
+import folderStructureReducer from "@/app/main/sections/FolderStructureSection/store/folderStructureReducer";
 const store = configureStore({
   reducer: {
     modal: modalReducer,
-    repo: repoReducer,
-    contributingGuide: contributingGuideReducer,
+    repoReducer,
+    contributingGuideReducer,
+    folderStructureReducer,
   },
 });
 

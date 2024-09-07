@@ -7,9 +7,11 @@ import "@uiw/react-markdown-preview/markdown.css";
 import SectionHeader from "../../components/SectionHeader";
 import { useFetchFolderStructureData } from "./hooks/useFetchFolderStructureData";
 import MarkDownEditor from "@/components/MarkDownEditor";
+import store from "@/app/store";
+import { setFolderstructure } from "./store/folderStructureReducer";
 
 const FolderStructureSection = () => {
-  const { folderStructure, fetchFolderStructureData } =
+  const { folderStructureMarkdownValue, fetchFolderStructureData } =
     useFetchFolderStructureData();
 
   return (
@@ -24,9 +26,11 @@ const FolderStructureSection = () => {
       </div>
       <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700" />
       <MarkDownEditor
-        value={folderStructure}
+        value={folderStructureMarkdownValue}
         visible={true}
-        localStorageName="folderStructure"
+        onChange={(value) => {
+          store.dispatch(setFolderstructure(value));
+        }}
       />
     </MoveUpFadeAnimation>
   );

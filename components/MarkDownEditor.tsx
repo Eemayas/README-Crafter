@@ -13,6 +13,7 @@ interface MarkDownEditorProps {
   visible: boolean;
   className?: string;
   localStorageName?: string;
+  onChange?: (value: string) => void;
 }
 
 const MarkDownEditor: React.FC<MarkDownEditorProps> = ({
@@ -20,6 +21,7 @@ const MarkDownEditor: React.FC<MarkDownEditorProps> = ({
   visible,
   className,
   localStorageName,
+  onChange,
 }) => {
   const [localStorage, setLocalStorage] = useLocalStorage(
     localStorageName ? localStorageName : "temp",
@@ -32,8 +34,12 @@ const MarkDownEditor: React.FC<MarkDownEditorProps> = ({
         visible={visible}
         className={className}
         onChange={(value, viewUpdate) => {
-          console.log({ localStorage, value });
-          setLocalStorage(value);
+          if (localStorage) {
+            console.log({ localStorage, value });
+            setLocalStorage(value);
+          } else {
+            onChange && onChange(value);
+          }
         }}
       />
     </div>
