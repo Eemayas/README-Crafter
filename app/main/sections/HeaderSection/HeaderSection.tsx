@@ -11,6 +11,8 @@ import { projectTypeList } from "./constants";
 import SectionHeader from "../../components/SectionHeader";
 import { useFetchHeaderData } from "./hooks/useFetchHeaderData";
 import MarkDownEditor from "@/components/MarkDownEditor";
+import { setHeader } from "./store/headerReducer";
+import store from "@/app/store";
 
 const HeaderSection = () => {
   const {
@@ -58,7 +60,9 @@ const HeaderSection = () => {
         value={projectHeaderValue}
         visible={true}
         className="h-[50vh]"
-        localStorageName="headerSection"
+        onChange={(value) => {
+          store.dispatch(setHeader(value));
+        }}
       />
     </MoveUpFadeAnimation>
   );

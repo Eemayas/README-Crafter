@@ -4,7 +4,7 @@ import { useState, useCallback } from "react";
 
 import { initialProjectHeaderMkdr, projectTypeList } from "../constants";
 import { showSpinner } from "@/components/Modals/store/ModalReducer";
-import store from "@/app/store";
+import store, { RootState } from "@/app/store";
 import {
   getProjectBadgeUrl,
   getProjectIconUrl,
@@ -13,6 +13,8 @@ import {
 } from "@/lib/constants/apiEndpoints";
 import useLocalStorage from "@/lib/hooks/useLocalStorage";
 import { headerSectionLS, repoInfoLS } from "@/lib/constants/localStorageNames";
+import { useSelector } from "react-redux";
+import { setHeader } from "../store/headerReducer";
 
 export function useFetchHeaderData() {
   const [{ repoLink }] = useLocalStorage(repoInfoLS, {
@@ -25,11 +27,9 @@ export function useFetchHeaderData() {
   );
   const [inputProjectImageUrl, setInputProjectImageUrl] = useState("");
 
-  const [projectHeaderValue, setProjectHeaderValue] = useLocalStorage(
-    headerSectionLS,
-    initialProjectHeaderMkdr,
+  const projectHeaderValue = useSelector(
+    (state: RootState) => state.projectHeaderReducer,
   );
-
   const fetchHeaderData = useCallback(async () => {
     store.dispatch(showSpinner(true));
 
@@ -72,12 +72,14 @@ export function useFetchHeaderData() {
         projectBadgeJson: projectBadgeJson?.badges_html,
       });
 
-      setProjectHeaderValue(`
+      store.dispatch(
+        setHeader(`
 ${projectIconJson?.project_image_markdown || ""}
 ${projectNameJson?.project_name_markdown || ""}
 ${projectBadgeJson?.badges_html || ""}
 ${projectLanguageJson?.badges_html || ""}
-      `);
+      `),
+      );
     } catch (error) {
       console.error("Error fetching one or more data sources:", error);
     } finally {

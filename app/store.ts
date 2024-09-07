@@ -7,6 +7,8 @@ import folderStructureReducer from "@/app/main/sections/FolderStructureSection/s
 import contributingGuideReducer from "@/app/main/sections/ContributingGuideSection/store/ContributingGuideReducer";
 import contributorsReducer from "@/app/main/sections/ContributorsSection/store/contributorsReducer";
 import licenseReducer from "@/app/main/sections/LicenseSection/store/licenseReducer";
+import projectHeaderReducer from "@/app/main/sections/HeaderSection/store/headerReducer";
+
 const store = configureStore({
   reducer: {
     modal: modalReducer,
@@ -15,6 +17,7 @@ const store = configureStore({
     contributingGuideReducer,
     contributorsReducer,
     licenseReducer,
+    projectHeaderReducer,
   },
 });
 
