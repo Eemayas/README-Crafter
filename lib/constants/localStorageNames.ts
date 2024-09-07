@@ -12,6 +12,8 @@ export const projectOverviewLS = "projectOverview";
 
 export const keyFeaturesLS = "keyFeatures";
 
+export const projectInstallationGuideLS = "projectInstallationGuide";
+
 export const contributingGuideLS = "contributingGuide";
 
 export const contributorsLS = "contributors";

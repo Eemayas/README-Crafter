@@ -2,6 +2,12 @@
 
 export const BASE_API_URL = "http://127.0.0.1:5000";
 
+export const getMetaDataUrl = (repoLink: string) =>
+  `${BASE_API_URL}/metadataUrl?repository_url=${encodeURIComponent(repoLink)}`;
+
+export const getCloneRepoUrl = (repoLink: string) =>
+  `${BASE_API_URL}/cloneRepUrl?repository_url=${encodeURIComponent(repoLink)}`;
+
 export const getFolderStructureUrl = (repoLink: string) =>
   `${BASE_API_URL}/folder_structure?repository_url=${encodeURIComponent(
     repoLink,
@@ -49,6 +55,11 @@ export const getSummaryGenerationFileUrl = (
 
 export const getKeyFeatureUrl = (repoLink: string) =>
   `${BASE_API_URL}/project_key_feature?repository_url=${encodeURIComponent(
+    repoLink,
+  )}`;
+
+export const getProjectInstallationGuideUrl = (repoLink: string) =>
+  `${BASE_API_URL}/project_installation_guide?repository_url=${encodeURIComponent(
     repoLink,
   )}`;
 

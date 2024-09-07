@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { setRepo } from "../store/repoReducer";
 import useLocalStorage from "@/lib/hooks/useLocalStorage";
 import { repoInfoLS } from "@/lib/constants/localStorageNames";
+import { getCloneRepoUrl, getMetaDataUrl } from "@/lib/constants/apiEndpoints";
 
 export const useRepoData = () => {
   const dispatch = useDispatch();
@@ -46,12 +47,8 @@ export const useRepoData = () => {
 
   const fetchData = async (inputRepositoryUrl: string) => {
     try {
-      const metadataUrl = `http://127.0.0.1:5000/github_metadata?repository_url=${encodeURIComponent(
-        inputRepositoryUrl,
-      )}`;
-      const cloneRepUrl = `http://127.0.0.1:5000/clone_repo?repository_url=${encodeURIComponent(
-        inputRepositoryUrl,
-      )}`;
+      const metadataUrl = getMetaDataUrl(inputRepositoryUrl);
+      const cloneRepUrl = getCloneRepoUrl(inputRepositoryUrl);
 
       const metadataResponse = await fetch(metadataUrl);
       const metadataJson = await metadataResponse.json();

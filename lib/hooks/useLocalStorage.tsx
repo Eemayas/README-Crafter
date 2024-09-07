@@ -18,5 +18,4 @@ function useLocalStorage<T>(
 
   return [value, setValue];
 }
-
 export default useLocalStorage;

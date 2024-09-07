@@ -20,6 +20,7 @@ import {
   folderStructureDictLS,
   repoInfoLS,
 } from "@/lib/constants/localStorageNames";
+import ProjectInstallationGuideSection from "./sections/ProjectInstallationGuideSection/ProjectInstallationGuideSection";
 
 const MainPage = () => {
   const router = useRouter();
@@ -68,22 +69,24 @@ const MainPage = () => {
     <>
       <HeroHighlight>
         {/* <Navbar /> */}
-        {/*<SummaryGenerationSection />
-       <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700"></hr>
+        <SummaryGenerationSection />
+        <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700"></hr>
         <HeaderSection />
         <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700"></hr>
         <ProjectOverviewSection />
-        <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700"></hr> */}
+        <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700"></hr>
         <KeyFeatureSection />
+        <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700"></hr>
+        <ProjectInstallationGuideSection />
         <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700"></hr>
         <FolderStructureSection />
         <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700"></hr>
-        {/* <ContributingGuideSection />
+        <ContributingGuideSection />
         <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700"></hr>
         <ContributorsSection />
         <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700"></hr>
         <LicenseSection />
-        <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700"></hr> */}
+        <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700"></hr>
       </HeroHighlight>
     </>
   );
