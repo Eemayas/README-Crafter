@@ -2,7 +2,7 @@
 import { useState, useCallback } from "react";
 import { initialContributingGuidelinesMkdr } from "../constant";
 import { showSpinner } from "@/components/Modals/store/ModalReducer";
-import store from "@/app/store";
+import store, { RootState } from "@/app/store";
 import { getContributingGuideUrl } from "@/lib/constants/apiEndpoints";
 import useLocalStorage from "@/lib/hooks/useLocalStorage";
 import {
@@ -10,14 +10,17 @@ import {
   contributorsLS,
   repoInfoLS,
 } from "@/lib/constants/localStorageNames";
+import { useSelector } from "react-redux";
+import { setContributingGuide } from "../store/ContributingGuideReducer";
 
 export function useFetchContributingGuideData() {
   const [{ repoLink }] = useLocalStorage(repoInfoLS, {
     repoName: "",
     repoLink: "",
   });
-  const [contributingGuideMarkdownValue, setContributingGuideMarkdownValue] =
-    useLocalStorage(contributingGuideLS, initialContributingGuidelinesMkdr);
+  const contributingGuideMarkdownValue = useSelector(
+    (state: RootState) => state.contributingGuideReducer,
+  );
 
   const fetchContributingGuideData = useCallback(async () => {
     store.dispatch(showSpinner(true));
@@ -28,8 +31,7 @@ export function useFetchContributingGuideData() {
       const response = await fetch(contributingGuideUrl);
       const data = await response.json();
 
-      setContributingGuideMarkdownValue(data.contributing_guide_markdown);
-      console.log({ data: data.contributing_guide_markdown });
+      store.dispatch(setContributingGuide(data.contributing_guide_markdown));
     } catch (error) {
       console.error("Error fetching data:", error);
     }

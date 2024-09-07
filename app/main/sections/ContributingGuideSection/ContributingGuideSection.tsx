@@ -5,6 +5,8 @@ import MoveUpFadeAnimation from "@/components/MoveUpFadeAnimation";
 import { useFetchContributingGuideData } from "./hooks/useFetchContributingGuideData";
 import SectionHeader from "../../components/SectionHeader";
 import MarkDownEditor from "@/components/MarkDownEditor";
+import store from "@/app/store";
+import { setContributingGuide } from "./store/ContributingGuideReducer";
 
 const ContributingGuideSection = () => {
   const { contributingGuideMarkdownValue, fetchContributingGuideData } =
@@ -28,7 +30,7 @@ const ContributingGuideSection = () => {
         value={contributingGuideMarkdownValue}
         visible={true}
         className="h-screen"
-        localStorageName="contributingGuide"
+        onChange={(value) => store.dispatch(setContributingGuide(value))}
       />
     </MoveUpFadeAnimation>
   );

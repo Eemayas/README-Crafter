@@ -8,10 +8,11 @@ const contributingGuideSlice = createSlice({
   initialState,
   reducers: {
     setContributingGuide: (state: string, action: PayloadAction<string>) => {
-      state = action.payload;
+      console.log({ contributiongude: action.payload });
+      return action.payload;
     },
     resetContributingGuide: (state: string, action: PayloadAction<string>) => {
-      state = initialContributingGuidelinesMkdr;
+      return initialContributingGuidelinesMkdr;
     },
   },
 });

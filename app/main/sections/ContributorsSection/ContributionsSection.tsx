@@ -6,6 +6,9 @@ import SectionHeader from "../../components/SectionHeader";
 import ActionButton from "@/components/ActionButton";
 import { useFetchContributorsData } from "./hooks/useFetchContributorsData";
 import MarkDownEditor from "@/components/MarkDownEditor";
+import { setLicense } from "../LicenseSection/store/licenseReducer";
+import store from "@/app/store";
+import { setContributors } from "./store/contributorsReducer";
 
 const ContributorsSection: React.FC = () => {
   const { contributorsMarkdownValue, fetchContributorsData } =
@@ -30,7 +33,7 @@ const ContributorsSection: React.FC = () => {
           value={contributorsMarkdownValue}
           visible={true}
           className="h-[50vh]"
-          localStorageName="contributors"
+          onChange={(value) => store.dispatch(setContributors(value))}
         />
       </MoveUpFadeAnimation>
     </>
