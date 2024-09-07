@@ -8,12 +8,8 @@ import SectionHeader from "../../components/SectionHeader";
 import MarkDownEditor from "@/components/MarkDownEditor";
 
 const ContributingGuideSection = () => {
-  const [repoInfo] = useLocalStorage("repoInfo", {
-    repoName: "",
-    repoLink: "",
-  });
   const { contributingGuideMarkdownValue, fetchContributingGuideData } =
-    useFetchContributingGuideData(repoInfo.repoLink);
+    useFetchContributingGuideData();
 
   return (
     <MoveUpFadeAnimation>
@@ -33,6 +29,7 @@ const ContributingGuideSection = () => {
         value={contributingGuideMarkdownValue}
         visible={true}
         className="h-screen"
+        localStorageName="contributingGuide"
       />
     </MoveUpFadeAnimation>
   );

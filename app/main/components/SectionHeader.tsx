@@ -10,11 +10,10 @@ const SectionHeader: React.FC<{
   subtext: string;
   className?: string;
 }> = ({ text, subtext, className }) => {
-  const [repoInfo, setRepoInfo] = useLocalStorage("repoInfo", {
+  const [repoInfo] = useLocalStorage("repoInfo", {
     repoName: "",
     repoLink: "",
   });
-  localStorage.getItem("repoInfo");
   return (
     <>
       <h1

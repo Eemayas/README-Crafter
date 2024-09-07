@@ -3,13 +3,14 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setRepo } from "../store/repoReducer";
 import useLocalStorage from "@/lib/hooks/useLocalStorage";
+import { repoInfoLS } from "@/lib/constants/localStorageNames";
 
 export const useRepoData = () => {
   const dispatch = useDispatch();
   const [metadata, setMetadata] = useState(null);
   const [cloneData, setCloneData] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
-  const [repoInfo, setRepoInfo] = useLocalStorage("repoInfo", {
+  const [repoInfo, setRepoInfo] = useLocalStorage(repoInfoLS, {
     repoName: "",
     repoLink: "",
   });
@@ -73,6 +74,7 @@ export const useRepoData = () => {
       );
     } catch (error) {
       console.error("Error fetching data:", error);
+      throw error;
     }
   };
 

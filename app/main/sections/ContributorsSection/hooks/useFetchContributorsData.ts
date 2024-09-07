@@ -1,15 +1,20 @@
 /** @format */
 
-import { useState, useCallback } from "react";
+import { useCallback } from "react";
 import { initialContributorsMkdr } from "../constants";
 import { getContributorsUrl } from "@/lib/constants/apiEndpoints";
 import { showSpinner } from "@/components/Modals/store/ModalReducer";
 import store from "@/app/store";
+import { contributorsLS, repoInfoLS } from "@/lib/constants/localStorageNames";
+import useLocalStorage from "@/lib/hooks/useLocalStorage";
 
-export function useFetchContributorsData(repoLink: string) {
-  const [contributorsMarkdownValue, setContributorsMarkdownValue] = useState(
-    initialContributorsMkdr,
-  );
+export function useFetchContributorsData() {
+  const [{ repoLink }] = useLocalStorage(repoInfoLS, {
+    repoName: "",
+    repoLink: "",
+  });
+  const [contributorsMarkdownValue, setContributorsMarkdownValue] =
+    useLocalStorage(contributorsLS, initialContributorsMkdr);
 
   const fetchContributorsData = useCallback(async () => {
     store.dispatch(showSpinner(true));

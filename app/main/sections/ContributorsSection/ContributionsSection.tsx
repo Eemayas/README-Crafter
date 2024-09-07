@@ -8,12 +8,8 @@ import { useFetchContributorsData } from "./hooks/useFetchContributorsData";
 import MarkDownEditor from "@/components/MarkDownEditor";
 
 const ContributorsSection: React.FC = () => {
-  const [repoInfo] = useLocalStorage("repoInfo", {
-    repoName: "",
-    repoLink: "",
-  });
   const { contributorsMarkdownValue, fetchContributorsData } =
-    useFetchContributorsData(repoInfo.repoLink);
+    useFetchContributorsData();
 
   return (
     <>
@@ -34,6 +30,7 @@ const ContributorsSection: React.FC = () => {
           value={contributorsMarkdownValue}
           visible={true}
           className="h-[50vh]"
+          localStorageName="contributors"
         />
       </MoveUpFadeAnimation>
     </>

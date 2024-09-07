@@ -104,9 +104,6 @@ export const MultiStepLoader = ({
   loop?: boolean;
   currentState: number;
 }) => {
-  useEffect(() => {
-    console.log({ currentState });
-  }, [currentState]);
   return (
     <AnimatePresence mode="wait">
       {loading && (

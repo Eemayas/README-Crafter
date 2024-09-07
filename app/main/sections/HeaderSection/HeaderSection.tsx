@@ -1,8 +1,7 @@
 /** @format */
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import MoveUpFadeAnimation from "@/components/MoveUpFadeAnimation";
-import useLocalStorage from "@/lib/hooks/useLocalStorage";
 import ActionButton from "@/components/ActionButton";
 import "@uiw/react-markdown-editor/markdown-editor.css";
 import "@uiw/react-markdown-preview/markdown.css";
@@ -14,20 +13,14 @@ import { useFetchHeaderData } from "./hooks/useFetchHeaderData";
 import MarkDownEditor from "@/components/MarkDownEditor";
 
 const HeaderSection = () => {
-  const [repoInfo] = useLocalStorage("repoInfo", {
-    repoName: "",
-    repoLink: "",
-  });
-  const [selectedOption, setSelectedOption] = useState<string>(
-    projectTypeList[0],
-  );
-  const [inputProjectImageUrl, setInputProjectImageUrl] = useState("");
-
-  const { projectHeaderValue, fetchHeaderData } = useFetchHeaderData(
-    repoInfo.repoLink,
-    projectTypeList.findIndex((option) => option === selectedOption) + 1,
+  const {
+    projectHeaderValue,
+    fetchHeaderData,
+    selectedOption,
+    setSelectedOption,
     inputProjectImageUrl,
-  );
+    setInputProjectImageUrl,
+  } = useFetchHeaderData();
 
   const handleDropdownChange = (selected: string) => {
     setSelectedOption(selected);

@@ -11,13 +11,22 @@ import {
   getProjectLanguageUrl,
   getProjectNameUrl,
 } from "@/lib/constants/apiEndpoints";
+import useLocalStorage from "@/lib/hooks/useLocalStorage";
+import { headerSectionLS, repoInfoLS } from "@/lib/constants/localStorageNames";
 
-export function useFetchHeaderData(
-  repoLink: string,
-  selectedOption: number,
-  inputProjectImageUrl: string,
-) {
-  const [projectHeaderValue, setProjectHeaderValue] = useState(
+export function useFetchHeaderData() {
+  const [{ repoLink }] = useLocalStorage(repoInfoLS, {
+    repoName: "",
+    repoLink: "",
+  });
+
+  const [selectedOption, setSelectedOption] = useState<string>(
+    projectTypeList[0],
+  );
+  const [inputProjectImageUrl, setInputProjectImageUrl] = useState("");
+
+  const [projectHeaderValue, setProjectHeaderValue] = useLocalStorage(
+    headerSectionLS,
     initialProjectHeaderMkdr,
   );
 
@@ -27,7 +36,7 @@ export function useFetchHeaderData(
     // Define URLs
     const projectIconUrl = getProjectIconUrl(
       repoLink,
-      selectedOption,
+      projectTypeList.findIndex((option) => option === selectedOption) + 1,
       inputProjectImageUrl,
     );
     const projectNameUrl = getProjectNameUrl(repoLink);
@@ -43,7 +52,7 @@ export function useFetchHeaderData(
         return await response.json();
       } catch (error) {
         console.error(`Error fetching data from ${url}:`, error);
-        return null;
+        throw error;
       }
     };
 
@@ -76,5 +85,12 @@ ${projectLanguageJson?.badges_html || ""}
     }
   }, [repoLink, selectedOption, inputProjectImageUrl]);
 
-  return { projectHeaderValue, fetchHeaderData };
+  return {
+    projectHeaderValue,
+    fetchHeaderData,
+    selectedOption,
+    setSelectedOption,
+    inputProjectImageUrl,
+    setInputProjectImageUrl,
+  };
 }

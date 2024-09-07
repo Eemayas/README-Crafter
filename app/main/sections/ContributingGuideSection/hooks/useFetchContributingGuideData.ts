@@ -4,14 +4,22 @@ import { initialContributingGuidelinesMkdr } from "../constant";
 import { showSpinner } from "@/components/Modals/store/ModalReducer";
 import store from "@/app/store";
 import { getContributingGuideUrl } from "@/lib/constants/apiEndpoints";
+import useLocalStorage from "@/lib/hooks/useLocalStorage";
+import {
+  contributingGuideLS,
+  contributorsLS,
+  repoInfoLS,
+} from "@/lib/constants/localStorageNames";
 
-export function useFetchContributingGuideData(repoLink: string) {
+export function useFetchContributingGuideData() {
+  const [{ repoLink }] = useLocalStorage(repoInfoLS, {
+    repoName: "",
+    repoLink: "",
+  });
   const [contributingGuideMarkdownValue, setContributingGuideMarkdownValue] =
-    useState(initialContributingGuidelinesMkdr);
-  const [loading, setLoading] = useState(false);
+    useLocalStorage(contributingGuideLS, initialContributingGuidelinesMkdr);
 
   const fetchContributingGuideData = useCallback(async () => {
-    setLoading(true);
     store.dispatch(showSpinner(true));
 
     try {
@@ -26,13 +34,11 @@ export function useFetchContributingGuideData(repoLink: string) {
       console.error("Error fetching data:", error);
     }
 
-    setLoading(false);
     store.dispatch(showSpinner(false));
   }, [repoLink]);
 
   return {
     contributingGuideMarkdownValue,
     fetchContributingGuideData,
-    loading,
   };
 }

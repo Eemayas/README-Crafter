@@ -5,10 +5,19 @@ import { showSpinner } from "@/components/Modals/store/ModalReducer";
 import { useState, useCallback } from "react";
 import { initialProjectOverviewMkdr } from "../constants";
 import { getProjectOverviewUrl } from "@/lib/constants/apiEndpoints";
+import useLocalStorage from "@/lib/hooks/useLocalStorage";
+import {
+  projectOverviewLS,
+  repoInfoLS,
+} from "@/lib/constants/localStorageNames";
 
-export function useFetchProjectOverviewData(repoLink: string) {
+export function useFetchProjectOverviewData() {
+  const [{ repoLink }] = useLocalStorage(repoInfoLS, {
+    repoName: "",
+    repoLink: "",
+  });
   const [projectOverviewMarkdownValue, setProjectOverviewMarkdownValue] =
-    useState(initialProjectOverviewMkdr);
+    useLocalStorage(projectOverviewLS, initialProjectOverviewMkdr);
 
   const fetchProjectOverviewData = useCallback(async () => {
     store.dispatch(showSpinner(true));

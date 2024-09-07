@@ -1,19 +1,14 @@
 /** @format */
 
 import MoveUpFadeAnimation from "@/components/MoveUpFadeAnimation";
-import useLocalStorage from "@/lib/hooks/useLocalStorage";
 import SectionHeader from "../../components/SectionHeader";
 import ActionButton from "@/components/ActionButton";
 import { useFetchKeyFeatureData } from "./hooks/useFetchKeyFeatureData";
 import MarkDownEditor from "@/components/MarkDownEditor";
 
 const KeyFeatureSection: React.FC = () => {
-  const [repoInfo] = useLocalStorage("repoInfo", {
-    repoName: "",
-    repoLink: "",
-  });
-  const { keyFeatureMarkdownValue, fetchKeyFeatureData, loading } =
-    useFetchKeyFeatureData(repoInfo.repoLink);
+  const { keyFeatureMarkdownValue, fetchKeyFeatureData } =
+    useFetchKeyFeatureData();
 
   return (
     <>
@@ -34,6 +29,7 @@ const KeyFeatureSection: React.FC = () => {
           value={keyFeatureMarkdownValue}
           visible={true}
           className="h-[50vh]"
+          localStorageName="keyFeatures"
         />
       </MoveUpFadeAnimation>
     </>

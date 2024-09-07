@@ -9,12 +9,9 @@ import { useFetchProjectOverviewData } from "./hooks/useFetchProjectOverviewData
 import MarkDownEditor from "@/components/MarkDownEditor";
 
 const ProjectOverviewSection: React.FC = () => {
-  const [repoInfo] = useLocalStorage("repoInfo", {
-    repoName: "",
-    repoLink: "",
-  });
+
   const { projectOverviewMarkdownValue, fetchProjectOverviewData } =
-    useFetchProjectOverviewData(repoInfo.repoLink);
+    useFetchProjectOverviewData();
 
   return (
     <MoveUpFadeAnimation>
@@ -32,6 +29,7 @@ const ProjectOverviewSection: React.FC = () => {
         value={projectOverviewMarkdownValue}
         visible={true}
         className="h-[50vh]"
+        localStorageName="projectOverview"
       />
     </MoveUpFadeAnimation>
   );

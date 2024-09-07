@@ -11,8 +11,14 @@ import { useRepoData } from "./hooks/useRepoData";
 import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
 import { useRouter } from "next/navigation";
 import store from "../store";
+import useLocalStorage from "@/lib/hooks/useLocalStorage";
+import { repoInfoLS } from "@/lib/constants/localStorageNames";
 
 export default function Home() {
+  const [repoInfo, setRepoInfo] = useLocalStorage(repoInfoLS, {
+    repoName: "",
+    repoLink: "",
+  });
   const router = useRouter();
   const {
     errorMessage,
@@ -30,8 +36,11 @@ export default function Home() {
       const repoExists = await checkRepoExistence(inputRepositoryUrl);
       if (repoExists) {
         setErrorMessage("");
-        await fetchData(inputRepositoryUrl);
-        router.push("/main");
+        await fetchData(inputRepositoryUrl)
+          .then(() => router.push("/main"))
+          .catch(() =>
+            setErrorMessage("Error Retrieveing MetaData from Server"),
+          );
       } else {
         setErrorMessage(
           "Repository does not exist or there was an error fetching the repository.",

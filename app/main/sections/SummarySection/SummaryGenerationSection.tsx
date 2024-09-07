@@ -1,41 +1,24 @@
 /** @format */
 
-import React, { useState } from "react";
-
-import { generateFileList } from "@/lib/utils/fileUtils";
-import useLocalStorage from "@/lib/hooks/useLocalStorage";
-import {
-  ignoreListExtensions,
-  ignoreListFolderStructure,
-} from "@/lib/constants/ignoreList";
+import React from "react";
 import { useFetchSummaryData } from "./hooks/useFetchSummaryData";
 import MoveUpFadeAnimation from "@/components/MoveUpFadeAnimation";
 import SectionHeader from "../../components/SectionHeader";
 import ActionButton from "@/components/ActionButton";
 import { MultiStepLoader as Loader } from "@/components/ui/multi-step-loader";
 import { IconSquareRoundedX } from "@tabler/icons-react";
-import { incorrectInitialFileDescriptions } from "./constant";
 import MarkDownEditor from "@/components/MarkDownEditor";
+import { summaryGenerationLS } from "@/lib/constants/localStorageNames";
 
 const SummaryGenerationSection: React.FC = () => {
-  const [folderStructureDict] = useLocalStorage("folderStructureDict", {});
-  const [repoInfo] = useLocalStorage("repoInfo", {
-    repoName: "",
-    repoLink: "",
-  });
-
-  const fileList = generateFileList(
-    folderStructureDict,
-    ignoreListFolderStructure,
-    ignoreListExtensions,
-  );
-
-  const { markdownValue, fetchSummaryData, loading, currentState, setLoading } =
-    useFetchSummaryData(
-      fileList,
-      repoInfo.repoLink,
-      incorrectInitialFileDescriptions,
-    );
+  const {
+    markdownValue,
+    fetchSummaryData,
+    loading,
+    currentState,
+    setLoading,
+    fileList,
+  } = useFetchSummaryData();
 
   return (
     <>
@@ -57,6 +40,7 @@ const SummaryGenerationSection: React.FC = () => {
           value={markdownValue}
           visible={true}
           className="min-h-screen"
+          localStorageName={summaryGenerationLS}
         />
       </MoveUpFadeAnimation>
       {loading && (

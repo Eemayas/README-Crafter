@@ -5,12 +5,18 @@ import { showSpinner } from "@/components/Modals/store/ModalReducer";
 import { useState, useCallback } from "react";
 import { initialKeyFeaturesMkdr } from "../constant";
 import { getKeyFeatureUrl } from "@/lib/constants/apiEndpoints";
+import useLocalStorage from "@/lib/hooks/useLocalStorage";
+import { keyFeaturesLS, repoInfoLS } from "@/lib/constants/localStorageNames";
 
-export function useFetchKeyFeatureData(repoLink: string) {
-  const [keyFeatureMarkdownValue, setKeyFeatureMarkdownValue] = useState(
+export function useFetchKeyFeatureData() {
+  const [{ repoLink }] = useLocalStorage(repoInfoLS, {
+    repoName: "",
+    repoLink: "",
+  });
+  const [keyFeatureMarkdownValue, setKeyFeatureMarkdownValue] = useLocalStorage(
+    keyFeaturesLS,
     initialKeyFeaturesMkdr,
   );
-  const [loading, setLoading] = useState(false);
 
   const fetchKeyFeatureData = useCallback(async () => {
     store.dispatch(showSpinner(true));
@@ -29,5 +35,5 @@ export function useFetchKeyFeatureData(repoLink: string) {
     store.dispatch(showSpinner(false));
   }, [repoLink]);
 
-  return { keyFeatureMarkdownValue, fetchKeyFeatureData, loading };
+  return { keyFeatureMarkdownValue, fetchKeyFeatureData };
 }

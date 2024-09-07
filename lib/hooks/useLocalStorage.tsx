@@ -12,8 +12,8 @@ function useLocalStorage<T>(
   });
 
   useEffect(() => {
+    console.log({ key, value });
     localStorage.setItem(key, JSON.stringify(value));
-    console.log({ localStoragespinner: value });
   }, [key, value]);
 
   return [value, setValue];

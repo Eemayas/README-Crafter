@@ -1,7 +1,7 @@
 /** @format */
 "use client";
 import { HeroHighlight } from "@/components/ui/hero-highlight";
-import React from "react";
+import React, { useEffect } from "react";
 import { Navbar } from "@/components/NavbarDemo";
 import { useRouter } from "next/navigation";
 import useLocalStorage from "@/lib/hooks/useLocalStorage";
@@ -15,37 +15,75 @@ import KeyFeatureSection from "./sections/KeyFeatureSection/KeyFeatureSection";
 import ContributorsSection from "./sections/ContributorsSection/ContributionsSection";
 import LicenseSection from "./sections/LicenseSection/LicenseSection";
 import ContributingGuideSection from "./sections/ContributingGuideSection/ContributingGuideSection";
+import { getFolderStructureDictUrl } from "@/lib/constants/apiEndpoints";
+import {
+  folderStructureDictLS,
+  repoInfoLS,
+} from "@/lib/constants/localStorageNames";
 
 const MainPage = () => {
   const router = useRouter();
 
-  const [repoInfo, setRepoInfo] = useLocalStorage("repoInfo", {
+  const [repoInfo, setRepoInfo] = useLocalStorage(repoInfoLS, {
     repoName: "",
     repoLink: "",
   });
+  const [folderStructureDict, setFolderStructureDict] = useLocalStorage(
+    folderStructureDictLS,
+    {},
+  );
+
   if (repoInfo.repoName === "") {
     router.push("./");
   }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (repoInfo.repoName === "") {
+        router.push("./"); // Redirect to home if repoName is empty
+      } else {
+        try {
+          const folderStructureUrl = getFolderStructureDictUrl(
+            repoInfo.repoLink,
+          );
+          await fetch(folderStructureUrl)
+            .then(async (folderStructureDictResponse) => {
+              const folderStructureDictJson =
+                await folderStructureDictResponse.json();
+              setFolderStructureDict(folderStructureDictJson.folder_structure);
+            })
+            .catch((e) =>
+              console.log(`Error fetching folder structure Dict: ${e}`),
+            );
+        } catch (error) {
+          console.error("Error fetching folder structure:", error);
+        }
+      }
+    };
+
+    fetchData();
+  }, [repoInfo, router]);
+
   return (
     <>
       <HeroHighlight>
         {/* <Navbar /> */}
-        <SummaryGenerationSection />
-        <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700"></hr>
+        {/*<SummaryGenerationSection />
+       <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700"></hr>
         <HeaderSection />
         <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700"></hr>
         <ProjectOverviewSection />
-        <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700"></hr>
+        <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700"></hr> */}
         <KeyFeatureSection />
         <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700"></hr>
         <FolderStructureSection />
         <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700"></hr>
-        <ContributingGuideSection />
+        {/* <ContributingGuideSection />
         <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700"></hr>
         <ContributorsSection />
         <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700"></hr>
         <LicenseSection />
-        <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700"></hr>
+        <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700"></hr> */}
       </HeroHighlight>
     </>
   );

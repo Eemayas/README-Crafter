@@ -8,12 +8,7 @@ import { useFetchLicenseData } from "./hooks/useFetchLicenseData";
 import MarkDownEditor from "@/components/MarkDownEditor";
 
 const LicenseSection = () => {
-  const [repoInfo] = useLocalStorage("repoInfo", {
-    repoName: "",
-    repoLink: "",
-  });
-  const { licenseMarkdownValue, fetchLicenseData, loading } =
-    useFetchLicenseData(repoInfo.repoLink);
+  const { licenseMarkdownValue, fetchLicenseData } = useFetchLicenseData();
 
   return (
     <MoveUpFadeAnimation>
@@ -33,6 +28,7 @@ const LicenseSection = () => {
         value={licenseMarkdownValue}
         visible={true}
         className="h-[50vh]"
+        localStorageName="license"
       />
     </MoveUpFadeAnimation>
   );
