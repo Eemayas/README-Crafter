@@ -2,9 +2,7 @@
 "use client";
 import { HeroHighlight } from "@/components/ui/hero-highlight";
 import React, { useEffect } from "react";
-import { Navbar } from "@/components/NavbarDemo";
 import { useRouter } from "next/navigation";
-import useLocalStorage from "@/lib/hooks/useLocalStorage";
 import "@uiw/react-markdown-editor/markdown-editor.css";
 import "@uiw/react-markdown-preview/markdown.css";
 import FolderStructureSection from "./sections/FolderStructureSection/FolderStructureSection";
@@ -20,6 +18,7 @@ import ProjectInstallationGuideSection from "./sections/ProjectInstallationGuide
 import { useSelector } from "react-redux";
 import store, { RootState } from "../store";
 import { setFolderstructureDict } from "./sections/FolderStructureSection/store/folderStructureDictReducer";
+import Navbar from "@/components/Navbar";
 
 const MainPage = () => {
   const router = useRouter();
@@ -62,8 +61,8 @@ const MainPage = () => {
   return (
     <>
       <HeroHighlight>
-        {/* <Navbar /> */}
-        <SummaryGenerationSection />
+        <Navbar />
+          <SummaryGenerationSection />
         <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700"></hr>
         <HeaderSection />
         <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700"></hr>

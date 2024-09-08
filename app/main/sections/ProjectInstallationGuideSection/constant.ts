@@ -1,7 +1,6 @@
 /** @format */
 
-export const initialProjectGuideMkdr = `
-**Getting Started**
+export const initialProjectGuideMkdr = `**Getting Started**
 ================
 
 Welcome to the Daraz Scraper installation guide! This guide will walk you through the process of setting up the project on your local machine.

@@ -1,7 +1,6 @@
 /** @format */
 
-export const initalFolderStructureMarkdown = `
-# Folder Structure
+export const initalFolderStructureMarkdown = `# Folder Structure
 \`\`\`sh
 folderName-1/
 ├── fileName-1.csv

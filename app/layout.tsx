@@ -7,6 +7,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { CustomSpinner } from "@/components/Modals/Modals";
 import ReduxProvider from "@/lib/context/ReduxProvider";
+import ThemeProviders from "@/lib/context/ThemeProviders";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,10 +24,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ReduxProvider>
-          <CustomSpinner />
-          {children}
-        </ReduxProvider>
+        <ThemeProviders>
+          <ReduxProvider>
+            <CustomSpinner />
+            {children}
+          </ReduxProvider>
+        </ThemeProviders>
       </body>
     </html>
   );

@@ -1,7 +1,6 @@
 /** @format */
 
-export const initialContributingGuidelinesMkdr = `
-# Contributing
+export const initialContributingGuidelinesMkdr = `# Contributing
 Contributions are welcome! Here are several ways you can contribute:
 - **[Submit Pull Requests](https://github.com/repo_owner/repo_name.git/pulls)**: Review open PRs, and submit your own PRs.
 - **[Join the Discussions](https://github.com/repo_owner/repo_name.git/discussions)**: Share your insights, provide feedback, or ask questions.

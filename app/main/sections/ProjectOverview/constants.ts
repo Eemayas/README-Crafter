@@ -1,7 +1,6 @@
 /** @format */
 
-export const initialProjectOverviewMkdr = `
-# Project Overview
+export const initialProjectOverviewMkdr = `# Project Overview
 
 This project involves developing a custom module called \`scrapper\` for scraping product data from an e-commerce platform, with specific focus on extracting detailed information about products listed on Daraz.com. The module is designed to automatically generate email notifications to users based on certain criteria related to product updates, such as changes in stock availability or price drops. 
 
