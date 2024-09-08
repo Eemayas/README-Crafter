@@ -1,20 +1,13 @@
 /** @format */
 import { useState } from "react";
-import { useDispatch } from "react-redux";
 import { setRepo } from "../store/repoReducer";
-import useLocalStorage from "@/lib/hooks/useLocalStorage";
-import { repoInfoLS } from "@/lib/constants/localStorageNames";
 import { getCloneRepoUrl, getMetaDataUrl } from "@/lib/constants/apiEndpoints";
+import store from "@/app/store";
 
 export const useRepoData = () => {
-  const dispatch = useDispatch();
   const [metadata, setMetadata] = useState(null);
   const [cloneData, setCloneData] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
-  const [repoInfo, setRepoInfo] = useLocalStorage(repoInfoLS, {
-    repoName: "",
-    repoLink: "",
-  });
 
   const validateGitHubLink = (value: string) => {
     const githubUrlPattern = /^https:\/\/github\.com\/[\w-]+\/[\w-]+\/?$/;
@@ -34,8 +27,6 @@ export const useRepoData = () => {
         );
       }
 
-      const data = await response.json();
-      const repoName = data.name;
       return true;
     } catch (error) {
       setErrorMessage(
@@ -54,16 +45,12 @@ export const useRepoData = () => {
       const metadataJson = await metadataResponse.json();
       setMetadata(metadataJson);
 
-      const cloneResponse = await fetch(cloneRepUrl);
-      const cloneJson = await cloneResponse.json();
-      setCloneData(cloneJson);
-      console.log({ metadataJson });
+      // const cloneResponse = await fetch(cloneRepUrl);
+      // const cloneJson = await cloneResponse.json();
+      // setCloneData(cloneJson);
+      // console.log({ metadataJson });
 
-      setRepoInfo({
-        repoName: metadataJson.metadata.name,
-        repoLink: metadataJson.metadata.clone_url.replace(/\.git$/, ""),
-      });
-      dispatch(
+      store.dispatch(
         setRepo({
           repoName: metadataJson.metadata.name,
           repoLink: metadataJson.metadata.clone_url,

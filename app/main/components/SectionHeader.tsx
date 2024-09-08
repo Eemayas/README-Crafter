@@ -4,16 +4,16 @@ import React from "react";
 import { Highlight } from "@/components/ui/hero-highlight";
 import { subTextStyle } from "@/app/style";
 import { LinkPreview } from "@/components/ui/link-preview";
-import useLocalStorage from "@/lib/hooks/useLocalStorage";
+import { useSelector } from "react-redux";
+import { RootState } from "@/app/store";
 const SectionHeader: React.FC<{
   text: string;
   subtext: string;
   className?: string;
 }> = ({ text, subtext, className }) => {
-  const [repoInfo] = useLocalStorage("repoInfo", {
-    repoName: "",
-    repoLink: "",
-  });
+  const { repoLink, repoName } = useSelector(
+    (state: RootState) => state.repoReducer,
+  );
   return (
     <>
       <h1
@@ -24,10 +24,10 @@ const SectionHeader: React.FC<{
       <h2 className={`${subTextStyle}`}>
         Generate the {subtext} of{" "}
         <LinkPreview
-          url={repoInfo.repoLink}
+          url={repoLink}
           className="bg-gradient-to-br from-purple-500 to-pink-500 bg-clip-text font-bold text-transparent"
         >
-          {repoInfo.repoName}
+          {repoName}
         </LinkPreview>
       </h2>
     </>

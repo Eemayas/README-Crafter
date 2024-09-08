@@ -11,14 +11,8 @@ import { useRepoData } from "./hooks/useRepoData";
 import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
 import { useRouter } from "next/navigation";
 import store from "../store";
-import useLocalStorage from "@/lib/hooks/useLocalStorage";
-import { repoInfoLS } from "@/lib/constants/localStorageNames";
 
 export default function Home() {
-  const [repoInfo, setRepoInfo] = useLocalStorage(repoInfoLS, {
-    repoName: "",
-    repoLink: "",
-  });
   const router = useRouter();
   const {
     errorMessage,

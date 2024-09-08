@@ -1,23 +1,17 @@
 /** @format */
 
-import store from "@/app/store";
+import store, { RootState } from "@/app/store";
 import { showSpinner } from "@/components/Modals/store/ModalReducer";
-import { useState, useCallback } from "react";
-import { initialProjectOverviewMkdr } from "../constants";
+import { useCallback } from "react";
 import { getProjectOverviewUrl } from "@/lib/constants/apiEndpoints";
-import useLocalStorage from "@/lib/hooks/useLocalStorage";
-import {
-  projectOverviewLS,
-  repoInfoLS,
-} from "@/lib/constants/localStorageNames";
+import { useSelector } from "react-redux";
+import { setProjectOverview } from "../store/projectOverviewReducer";
 
 export function useFetchProjectOverviewData() {
-  const [{ repoLink }] = useLocalStorage(repoInfoLS, {
-    repoName: "",
-    repoLink: "",
-  });
-  const [projectOverviewMarkdownValue, setProjectOverviewMarkdownValue] =
-    useLocalStorage(projectOverviewLS, initialProjectOverviewMkdr);
+  const { repoLink } = useSelector((state: RootState) => state.repoReducer);
+  const projectOverviewMarkdownValue = useSelector(
+    (state: RootState) => state.projectOverviewReducer,
+  );
 
   const fetchProjectOverviewData = useCallback(async () => {
     store.dispatch(showSpinner(true));
@@ -27,8 +21,7 @@ export function useFetchProjectOverviewData() {
 
       const response = await fetch(projectOverviewUrl);
       const data = await response.json();
-
-      setProjectOverviewMarkdownValue(data.project_overview_markdown);
+      store.dispatch(setProjectOverview(data.project_overview_markdown));
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {

@@ -1,5 +1,4 @@
 "use client";
-import useLocalStorage from "@/lib/hooks/useLocalStorage";
 import dynamic from "next/dynamic";
 import React from "react";
 // Dynamically import the Markdown editor component with SSR disabled
@@ -23,10 +22,6 @@ const MarkDownEditor: React.FC<MarkDownEditorProps> = ({
   localStorageName,
   onChange,
 }) => {
-  const [localStorage, setLocalStorage] = useLocalStorage(
-    localStorageName ? localStorageName : "temp",
-    "",
-  );
   return (
     <div className={`container mx-auto mb-10 w-[90%] lg:w-[1500px]`}>
       <MarkdownEditorImport
@@ -34,12 +29,12 @@ const MarkDownEditor: React.FC<MarkDownEditorProps> = ({
         visible={visible}
         className={className}
         onChange={(value, viewUpdate) => {
-          if (localStorage) {
-            console.log({ localStorage, value });
-            setLocalStorage(value);
-          } else {
-            onChange && onChange(value);
-          }
+          onChange && onChange(value);
+          // if (localStorage) {
+          //   console.log({ localStorage, value });
+          //   setLocalStorage(value);
+          // } else {
+          // }
         }}
       />
     </div>

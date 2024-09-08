@@ -1,3 +1,7 @@
+import {
+  convertFileDescriptions,
+  convertToMarkdownTable,
+} from "@/lib/utils/fileUtils";
 import { IncorrectFileDescription } from "./types";
 
 export const incorrectInitialFileDescriptions: IncorrectFileDescription = {
@@ -14,3 +18,7 @@ export const incorrectInitialFileDescriptions: IncorrectFileDescription = {
   "Github_repos\\Daraz_Scraper\\app\\layout.tsx":
     "Here's a summary of the code:\n\n**Purpose:** This code defines the layout for a Next.js application, which includes font imports, metadata setup, and a reusable `RootLayout` component.\n\n**Key Features:**\n\n1. **Font Imports**: The code imports two Google Fonts (Inter and Space_Grotesk) and sets them up with various subsets and weights.\n2. **Metadata Setup**: The `metadata` object defines the title and description of the application, which will be used in search engine results and other metadata contexts.\n3. **RootLayout Component**: This component is a reusable layout that wraps around the application's content. It includes:\n\t* A `<html>` tag with a `lang` attribute set to \"en\".\n\t* A `<body>` tag with a class name generated from the Inter font import.\n\t* A `<main>` tag with a max width and margin set to auto.\n\t* A `Navbar` component imported from another file.\n\t* The application's content (rendered by the `children` prop).\n\nOverall, this code sets up a basic layout for a Next.js application, including font imports and metadata setup.",
 };
+
+export const initialSummaryGenerationMkdr = convertToMarkdownTable(
+  convertFileDescriptions(incorrectInitialFileDescriptions),
+);

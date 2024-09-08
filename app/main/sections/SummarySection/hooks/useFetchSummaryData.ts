@@ -5,39 +5,29 @@
 import { useState, useCallback } from "react";
 import {
   FileDescription,
-  convertFileDescriptions,
   convertToMarkdownTable,
   generateFileList,
 } from "@/lib/utils/fileUtils";
 import { getSummaryGenerationFileUrl } from "@/lib/constants/apiEndpoints";
 import useLocalStorage from "@/lib/hooks/useLocalStorage";
-import {
-  summaryGenerationLS,
-  folderStructureDictLS,
-  repoInfoLS,
-} from "@/lib/constants/localStorageNames";
+import { folderStructureDictLS } from "@/lib/constants/localStorageNames";
 import {
   ignoreListExtensions,
   ignoreListFolderStructure,
 } from "@/lib/constants/ignoreList";
-import { incorrectInitialFileDescriptions } from "../constant";
+import store, { RootState } from "@/app/store";
+import { setSummaryGeneration } from "../store/summaryGenerationReducer";
+import { useSelector } from "react-redux";
 
 export function useFetchSummaryData() {
   const [loading, setLoading] = useState(false);
   const [currentState, setCurrentState] = useState(0);
   const [summaryData, setSummaryData] = useState<FileDescription[]>([]);
   const [folderStructureDict] = useLocalStorage(folderStructureDictLS, {});
-  const [markdownValue, setMarkdownValue] = useLocalStorage(
-    summaryGenerationLS,
-    convertToMarkdownTable(
-      convertFileDescriptions(incorrectInitialFileDescriptions),
-    ),
+  const markdownValue = useSelector(
+    (state: RootState) => state.summaryGenerationReducer,
   );
-  const [repoInfo] = useLocalStorage(repoInfoLS, {
-    repoName: "",
-    repoLink: "",
-  });
-  const { repoLink } = repoInfo;
+  const { repoLink } = useSelector((state: RootState) => state.repoReducer);
 
   const fileList = generateFileList(
     folderStructureDict,
@@ -75,7 +65,7 @@ export function useFetchSummaryData() {
     }
 
     setSummaryData(updatedData);
-    setMarkdownValue(convertToMarkdownTable(updatedData));
+    store.dispatch(setSummaryGeneration(convertToMarkdownTable(updatedData)));
     // store.dispatch(showSpinner(false));
     setLoading(false);
   }, [fileList, repoLink, summaryData]);

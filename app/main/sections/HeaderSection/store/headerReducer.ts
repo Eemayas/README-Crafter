@@ -8,6 +8,7 @@ const headerSlice = createSlice({
   initialState,
   reducers: {
     setHeader: (state: string, action: PayloadAction<string>) => {
+      console.log({ value: action.payload });
       return action.payload;
     },
     resetHeader: (state: string, action: PayloadAction<string>) => {

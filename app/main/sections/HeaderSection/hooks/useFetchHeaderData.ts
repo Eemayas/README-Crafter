@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from "react";
 
-import { initialProjectHeaderMkdr, projectTypeList } from "../constants";
+import { projectTypeList } from "../constants";
 import { showSpinner } from "@/components/Modals/store/ModalReducer";
 import store, { RootState } from "@/app/store";
 import {
@@ -11,16 +11,11 @@ import {
   getProjectLanguageUrl,
   getProjectNameUrl,
 } from "@/lib/constants/apiEndpoints";
-import useLocalStorage from "@/lib/hooks/useLocalStorage";
-import { headerSectionLS, repoInfoLS } from "@/lib/constants/localStorageNames";
 import { useSelector } from "react-redux";
 import { setHeader } from "../store/headerReducer";
 
 export function useFetchHeaderData() {
-  const [{ repoLink }] = useLocalStorage(repoInfoLS, {
-    repoName: "",
-    repoLink: "",
-  });
+  const { repoLink } = useSelector((state: RootState) => state.repoReducer);
 
   const [selectedOption, setSelectedOption] = useState<string>(
     projectTypeList[0],

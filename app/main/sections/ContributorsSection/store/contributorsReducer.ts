@@ -8,6 +8,7 @@ const contributorSlice = createSlice({
   initialState,
   reducers: {
     setContributors: (state: string, action: PayloadAction<string>) => {
+      console.log({ value: action.payload });
       return action.payload;
     },
     resetContributors: (state: string, action: PayloadAction<string>) => {
@@ -16,7 +17,6 @@ const contributorSlice = createSlice({
   },
 });
 
-export const { setContributors, resetContributors } =
-  contributorSlice.actions;
+export const { setContributors, resetContributors } = contributorSlice.actions;
 
 export default contributorSlice.reducer;

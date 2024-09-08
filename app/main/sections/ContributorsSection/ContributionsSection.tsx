@@ -1,12 +1,10 @@
 /** @format */
 
 import MoveUpFadeAnimation from "@/components/MoveUpFadeAnimation";
-import useLocalStorage from "@/lib/hooks/useLocalStorage";
 import SectionHeader from "../../components/SectionHeader";
 import ActionButton from "@/components/ActionButton";
 import { useFetchContributorsData } from "./hooks/useFetchContributorsData";
 import MarkDownEditor from "@/components/MarkDownEditor";
-import { setLicense } from "../LicenseSection/store/licenseReducer";
 import store from "@/app/store";
 import { setContributors } from "./store/contributorsReducer";
 

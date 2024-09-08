@@ -16,37 +16,32 @@ import ContributorsSection from "./sections/ContributorsSection/ContributionsSec
 import LicenseSection from "./sections/LicenseSection/LicenseSection";
 import ContributingGuideSection from "./sections/ContributingGuideSection/ContributingGuideSection";
 import { getFolderStructureDictUrl } from "@/lib/constants/apiEndpoints";
-import {
-  folderStructureDictLS,
-  repoInfoLS,
-} from "@/lib/constants/localStorageNames";
+import { folderStructureDictLS } from "@/lib/constants/localStorageNames";
 import ProjectInstallationGuideSection from "./sections/ProjectInstallationGuideSection/ProjectInstallationGuideSection";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 
 const MainPage = () => {
   const router = useRouter();
 
-  const [repoInfo, setRepoInfo] = useLocalStorage(repoInfoLS, {
-    repoName: "",
-    repoLink: "",
-  });
+  const repoInfo = useSelector((state: RootState) => state.repoReducer);
+  const { repoLink, repoName } = repoInfo;
   const [folderStructureDict, setFolderStructureDict] = useLocalStorage(
     folderStructureDictLS,
     {},
   );
 
-  if (repoInfo.repoName === "") {
+  if (repoName === "") {
     router.push("./");
   }
 
   useEffect(() => {
     const fetchData = async () => {
-      if (repoInfo.repoName === "") {
+      if (repoName === "") {
         router.push("./"); // Redirect to home if repoName is empty
       } else {
         try {
-          const folderStructureUrl = getFolderStructureDictUrl(
-            repoInfo.repoLink,
-          );
+          const folderStructureUrl = getFolderStructureDictUrl(repoLink);
           await fetch(folderStructureUrl)
             .then(async (folderStructureDictResponse) => {
               const folderStructureDictJson =

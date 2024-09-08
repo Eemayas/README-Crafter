@@ -1,15 +1,15 @@
 /** @format */
 
 import React from "react";
-import useLocalStorage from "@/lib/hooks/useLocalStorage";
 import MoveUpFadeAnimation from "@/components/MoveUpFadeAnimation";
 import SectionHeader from "../../components/SectionHeader";
 import ActionButton from "@/components/ActionButton";
 import { useFetchProjectOverviewData } from "./hooks/useFetchProjectOverviewData";
 import MarkDownEditor from "@/components/MarkDownEditor";
+import store from "@/app/store";
+import { setProjectOverview } from "./store/projectOverviewReducer";
 
 const ProjectOverviewSection: React.FC = () => {
-
   const { projectOverviewMarkdownValue, fetchProjectOverviewData } =
     useFetchProjectOverviewData();
 
@@ -29,7 +29,9 @@ const ProjectOverviewSection: React.FC = () => {
         value={projectOverviewMarkdownValue}
         visible={true}
         className="h-[50vh]"
-        localStorageName="projectOverview"
+        onChange={(value) => {
+          store.dispatch(setProjectOverview(value));
+        }}
       />
     </MoveUpFadeAnimation>
   );

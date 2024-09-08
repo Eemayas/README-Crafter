@@ -5,7 +5,8 @@ import SectionHeader from "../../components/SectionHeader";
 import ActionButton from "@/components/ActionButton";
 import MarkDownEditor from "@/components/MarkDownEditor";
 import { useFetchProjectInstallationGuideData } from "./hooks/useFetchKeyFeatureData";
-import { projectInstallationGuideLS } from "@/lib/constants/localStorageNames";
+import store from "@/app/store";
+import { setProjectInstallationGuide } from "./store/projectInstallationGuideReducer";
 
 const ProjectInstallationGuideSection: React.FC = () => {
   const {
@@ -35,7 +36,9 @@ const ProjectInstallationGuideSection: React.FC = () => {
           value={projectInstallationGuideMarkdownValue}
           visible={true}
           className="h-[50vh]"
-          localStorageName={projectInstallationGuideLS}
+          onChange={(value) => {
+            store.dispatch(setProjectInstallationGuide(value));
+          }}
         />
       </MoveUpFadeAnimation>
     </>

@@ -5,6 +5,8 @@ import SectionHeader from "../../components/SectionHeader";
 import ActionButton from "@/components/ActionButton";
 import { useFetchKeyFeatureData } from "./hooks/useFetchKeyFeatureData";
 import MarkDownEditor from "@/components/MarkDownEditor";
+import store from "@/app/store";
+import { setKeyFeatures } from "./store/keyFeaturesReducer";
 
 const KeyFeatureSection: React.FC = () => {
   const { keyFeatureMarkdownValue, fetchKeyFeatureData } =
@@ -29,7 +31,9 @@ const KeyFeatureSection: React.FC = () => {
           value={keyFeatureMarkdownValue}
           visible={true}
           className="h-[50vh]"
-          localStorageName="keyFeatures"
+          onChange={(value) => {
+            store.dispatch(setKeyFeatures(value));
+          }}
         />
       </MoveUpFadeAnimation>
     </>

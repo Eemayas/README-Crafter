@@ -8,6 +8,7 @@ const folderStructureSlice = createSlice({
   initialState,
   reducers: {
     setFolderstructure: (state: string, action: PayloadAction<string>) => {
+      console.log({ value: action.payload });
       return action.payload;
     },
     resetFolderstructure: (state: string, action: PayloadAction<string>) => {

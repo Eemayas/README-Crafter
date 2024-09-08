@@ -8,6 +8,10 @@ import contributingGuideReducer from "@/app/main/sections/ContributingGuideSecti
 import contributorsReducer from "@/app/main/sections/ContributorsSection/store/contributorsReducer";
 import licenseReducer from "@/app/main/sections/LicenseSection/store/licenseReducer";
 import projectHeaderReducer from "@/app/main/sections/HeaderSection/store/headerReducer";
+import keyFeaturesReducer from "@/app/main/sections/KeyFeatureSection/store/keyFeaturesReducer";
+import projectInstallationGuideReducer from "@/app/main/sections/ProjectInstallationGuideSection/store/projectInstallationGuideReducer";
+import projectOverviewReducer from "@/app/main/sections/ProjectOverview/store/projectOverviewReducer";
+import summaryGenerationReducer from "@/app//main/sections/SummarySection/store/summaryGenerationReducer";
 
 const store = configureStore({
   reducer: {
@@ -18,6 +22,10 @@ const store = configureStore({
     contributorsReducer,
     licenseReducer,
     projectHeaderReducer,
+    keyFeaturesReducer,
+    projectInstallationGuideReducer,
+    projectOverviewReducer,
+    summaryGenerationReducer,
   },
 });
 

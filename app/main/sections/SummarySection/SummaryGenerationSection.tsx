@@ -8,7 +8,8 @@ import ActionButton from "@/components/ActionButton";
 import { MultiStepLoader as Loader } from "@/components/ui/multi-step-loader";
 import { IconSquareRoundedX } from "@tabler/icons-react";
 import MarkDownEditor from "@/components/MarkDownEditor";
-import { summaryGenerationLS } from "@/lib/constants/localStorageNames";
+import store from "@/app/store";
+import { setSummaryGeneration } from "./store/summaryGenerationReducer";
 
 const SummaryGenerationSection: React.FC = () => {
   const {
@@ -40,7 +41,9 @@ const SummaryGenerationSection: React.FC = () => {
           value={markdownValue}
           visible={true}
           className="min-h-screen"
-          localStorageName={summaryGenerationLS}
+          onChange={(value) => {
+            store.dispatch(setSummaryGeneration(value));
+          }}
         />
       </MoveUpFadeAnimation>
       {loading && (

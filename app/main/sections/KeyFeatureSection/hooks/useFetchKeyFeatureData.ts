@@ -1,21 +1,16 @@
 /** @format */
 
-import store from "@/app/store";
+import store, { RootState } from "@/app/store";
 import { showSpinner } from "@/components/Modals/store/ModalReducer";
-import { useState, useCallback } from "react";
-import { initialKeyFeaturesMkdr } from "../constant";
+import { useCallback } from "react";
 import { getKeyFeatureUrl } from "@/lib/constants/apiEndpoints";
-import useLocalStorage from "@/lib/hooks/useLocalStorage";
-import { keyFeaturesLS, repoInfoLS } from "@/lib/constants/localStorageNames";
+import { useSelector } from "react-redux";
+import { setKeyFeatures } from "../store/keyFeaturesReducer";
 
 export function useFetchKeyFeatureData() {
-  const [{ repoLink }] = useLocalStorage(repoInfoLS, {
-    repoName: "",
-    repoLink: "",
-  });
-  const [keyFeatureMarkdownValue, setKeyFeatureMarkdownValue] = useLocalStorage(
-    keyFeaturesLS,
-    initialKeyFeaturesMkdr,
+  const { repoLink } = useSelector((state: RootState) => state.repoReducer);
+  const keyFeatureMarkdownValue = useSelector(
+    (state: RootState) => state.keyFeaturesReducer,
   );
 
   const fetchKeyFeatureData = useCallback(async () => {
@@ -27,7 +22,7 @@ export function useFetchKeyFeatureData() {
       const response = await fetch(keyFeatureUrl);
       const data = await response.json();
 
-      setKeyFeatureMarkdownValue(data.key_feature_markdown);
+      store.dispatch(setKeyFeatures(data.key_feature_markdown));
     } catch (error) {
       console.error("Error fetching data:", error);
     }

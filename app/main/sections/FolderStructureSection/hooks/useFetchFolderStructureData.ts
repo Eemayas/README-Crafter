@@ -4,16 +4,11 @@ import store, { RootState } from "@/app/store";
 import { showSpinner } from "@/components/Modals/store/ModalReducer";
 import { useCallback } from "react";
 import { getFolderStructureUrl } from "@/lib/constants/apiEndpoints";
-import useLocalStorage from "@/lib/hooks/useLocalStorage";
-import { repoInfoLS } from "@/lib/constants/localStorageNames";
 import { useSelector } from "react-redux";
 import { setFolderstructure } from "../store/folderStructureReducer";
 
 export function useFetchFolderStructureData() {
-  const [{ repoLink }] = useLocalStorage(repoInfoLS, {
-    repoName: "",
-    repoLink: "",
-  });
+  const { repoLink } = useSelector((state: RootState) => state.repoReducer);
   const folderStructureMarkdownValue = useSelector(
     (state: RootState) => state.folderStructureReducer,
   );

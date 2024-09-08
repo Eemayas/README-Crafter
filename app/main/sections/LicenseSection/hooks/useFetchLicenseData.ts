@@ -4,16 +4,11 @@ import store, { RootState } from "@/app/store";
 import { showSpinner } from "@/components/Modals/store/ModalReducer";
 import { getLicenseUrl } from "@/lib/constants/apiEndpoints";
 import { useCallback } from "react";
-import useLocalStorage from "@/lib/hooks/useLocalStorage";
-import { repoInfoLS } from "@/lib/constants/localStorageNames";
 import { useSelector } from "react-redux";
 import { setLicense } from "../store/licenseReducer";
 
 export function useFetchLicenseData() {
-  const [{ repoLink }] = useLocalStorage(repoInfoLS, {
-    repoName: "",
-    repoLink: "",
-  });
+  const { repoLink } = useSelector((state: RootState) => state.repoReducer);
 
   const licenseMarkdownValue = useSelector(
     (state: RootState) => state.licenseReducer,

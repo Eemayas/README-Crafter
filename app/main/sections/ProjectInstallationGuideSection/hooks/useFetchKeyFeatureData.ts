@@ -1,25 +1,17 @@
 /** @format */
 
-import store from "@/app/store";
+import store, { RootState } from "@/app/store";
 import { showSpinner } from "@/components/Modals/store/ModalReducer";
-import { useState, useCallback } from "react";
-import { initialKeyFeaturesMkdr } from "../constant";
-import {
-  getKeyFeatureUrl,
-  getProjectInstallationGuideUrl,
-} from "@/lib/constants/apiEndpoints";
-import useLocalStorage from "@/lib/hooks/useLocalStorage";
-import { keyFeaturesLS, repoInfoLS } from "@/lib/constants/localStorageNames";
+import { useCallback } from "react";
+import { getProjectInstallationGuideUrl } from "@/lib/constants/apiEndpoints";
+import { useSelector } from "react-redux";
+import { setProjectInstallationGuide } from "../store/projectInstallationGuideReducer";
 
 export function useFetchProjectInstallationGuideData() {
-  const [{ repoLink }] = useLocalStorage(repoInfoLS, {
-    repoName: "",
-    repoLink: "",
-  });
-  const [
-    projectInstallationGuideMarkdownValue,
-    setProjectInstallationGuideMarkdownValue,
-  ] = useLocalStorage(keyFeaturesLS, initialKeyFeaturesMkdr);
+  const { repoLink } = useSelector((state: RootState) => state.repoReducer);
+  const projectInstallationGuideMarkdownValue = useSelector(
+    (state: RootState) => state.projectInstallationGuideReducer,
+  );
 
   const fetchProjectInstallationGuideData = useCallback(async () => {
     store.dispatch(showSpinner(true));
@@ -30,8 +22,8 @@ export function useFetchProjectInstallationGuideData() {
       const response = await fetch(keyFeatureUrl);
       const data = await response.json();
 
-      setProjectInstallationGuideMarkdownValue(
-        data.installation_guide_markdown,
+      store.dispatch(
+        setProjectInstallationGuide(data.installation_guide_markdown),
       );
     } catch (error) {
       console.error("Error fetching data:", error);

@@ -8,6 +8,7 @@ const licenseSlice = createSlice({
   initialState,
   reducers: {
     setLicense: (state: string, action: PayloadAction<string>) => {
+      console.log({ value: action.payload });
       return action.payload;
     },
     resetLicense: (state: string, action: PayloadAction<string>) => {

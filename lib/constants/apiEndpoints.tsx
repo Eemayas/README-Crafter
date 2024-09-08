@@ -3,10 +3,10 @@
 export const BASE_API_URL = "http://127.0.0.1:5000";
 
 export const getMetaDataUrl = (repoLink: string) =>
-  `${BASE_API_URL}/metadataUrl?repository_url=${encodeURIComponent(repoLink)}`;
+  `${BASE_API_URL}/github_metadata?repository_url=${encodeURIComponent(repoLink)}`;
 
 export const getCloneRepoUrl = (repoLink: string) =>
-  `${BASE_API_URL}/cloneRepUrl?repository_url=${encodeURIComponent(repoLink)}`;
+  `${BASE_API_URL}/clone_repo?repository_url=${encodeURIComponent(repoLink)}`;
 
 export const getFolderStructureUrl = (repoLink: string) =>
   `${BASE_API_URL}/folder_structure?repository_url=${encodeURIComponent(
