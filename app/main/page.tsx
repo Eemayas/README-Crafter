@@ -16,29 +16,24 @@ import ContributorsSection from "./sections/ContributorsSection/ContributionsSec
 import LicenseSection from "./sections/LicenseSection/LicenseSection";
 import ContributingGuideSection from "./sections/ContributingGuideSection/ContributingGuideSection";
 import { getFolderStructureDictUrl } from "@/lib/constants/apiEndpoints";
-import { folderStructureDictLS } from "@/lib/constants/localStorageNames";
 import ProjectInstallationGuideSection from "./sections/ProjectInstallationGuideSection/ProjectInstallationGuideSection";
 import { useSelector } from "react-redux";
-import { RootState } from "../store";
+import store, { RootState } from "../store";
+import { setFolderstructureDict } from "./sections/FolderStructureSection/store/folderStructureDictReducer";
 
 const MainPage = () => {
   const router = useRouter();
-
   const repoInfo = useSelector((state: RootState) => state.repoReducer);
   const { repoLink, repoName } = repoInfo;
-  const [folderStructureDict, setFolderStructureDict] = useLocalStorage(
-    folderStructureDictLS,
-    {},
-  );
 
-  if (repoName === "") {
-    router.push("./");
-  }
+  // if (repoName === "") {
+  //   router.push("./");
+  // }
 
   useEffect(() => {
     const fetchData = async () => {
       if (repoName === "") {
-        router.push("./"); // Redirect to home if repoName is empty
+        // router.push("./"); // Redirect to home if repoName is empty
       } else {
         try {
           const folderStructureUrl = getFolderStructureDictUrl(repoLink);
@@ -46,7 +41,11 @@ const MainPage = () => {
             .then(async (folderStructureDictResponse) => {
               const folderStructureDictJson =
                 await folderStructureDictResponse.json();
-              setFolderStructureDict(folderStructureDictJson.folder_structure);
+              store.dispatch(
+                setFolderstructureDict(
+                  folderStructureDictJson.folder_structure,
+                ),
+              );
             })
             .catch((e) =>
               console.log(`Error fetching folder structure Dict: ${e}`),

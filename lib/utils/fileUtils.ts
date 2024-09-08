@@ -1,15 +1,15 @@
 /** @format */
 
-export type FileTree = { [key: string]: FileTree | null };
+import { TFolderStructureDict } from "@/app/main/sections/FolderStructureSection/types";
 
 export function generateFileList(
-  input: FileTree,
+  input: TFolderStructureDict,
   ignoreList: string[] = [],
   ignoreExtensions: string[] = [],
 ): string[] {
   let summary: string[] = [];
 
-  function processNode(node: FileTree | null, currentPath: string) {
+  function processNode(node: TFolderStructureDict | null, currentPath: string) {
     if (!node) return;
 
     for (const key in node) {

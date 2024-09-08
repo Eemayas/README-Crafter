@@ -11,21 +11,23 @@ import projectHeaderReducer from "@/app/main/sections/HeaderSection/store/header
 import keyFeaturesReducer from "@/app/main/sections/KeyFeatureSection/store/keyFeaturesReducer";
 import projectInstallationGuideReducer from "@/app/main/sections/ProjectInstallationGuideSection/store/projectInstallationGuideReducer";
 import projectOverviewReducer from "@/app/main/sections/ProjectOverview/store/projectOverviewReducer";
-import summaryGenerationReducer from "@/app//main/sections/SummarySection/store/summaryGenerationReducer";
+import summaryGenerationReducer from "@/app/main/sections/SummarySection/store/summaryGenerationReducer";
+import folderStructureDictReducer from "@/app/main/sections/FolderStructureSection/store/folderStructureDictReducer";
 
 const store = configureStore({
   reducer: {
     modal: modalReducer,
     repoReducer,
+    summaryGenerationReducer,
+    projectHeaderReducer,
+    projectOverviewReducer,
+    keyFeaturesReducer,
     folderStructureReducer,
+    folderStructureDictReducer,
+    projectInstallationGuideReducer,
     contributingGuideReducer,
     contributorsReducer,
     licenseReducer,
-    projectHeaderReducer,
-    keyFeaturesReducer,
-    projectInstallationGuideReducer,
-    projectOverviewReducer,
-    summaryGenerationReducer,
   },
 });
 

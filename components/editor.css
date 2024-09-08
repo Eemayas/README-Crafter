@@ -1,0 +1,17 @@
+/* .md-editor-preview {
+  height: fit-content;
+}
+.md-editor-content {
+  height: "100%";
+  background-color: aqua;
+} */
+.cm-line {
+  padding: 5px 2px 5px 6px !important;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+.cm-content {
+  font-size: large;
+  padding-left: 10px;
+  max-width: calc(95%);
+}

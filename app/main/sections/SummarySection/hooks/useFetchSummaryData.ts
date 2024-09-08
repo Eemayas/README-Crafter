@@ -9,8 +9,6 @@ import {
   generateFileList,
 } from "@/lib/utils/fileUtils";
 import { getSummaryGenerationFileUrl } from "@/lib/constants/apiEndpoints";
-import useLocalStorage from "@/lib/hooks/useLocalStorage";
-import { folderStructureDictLS } from "@/lib/constants/localStorageNames";
 import {
   ignoreListExtensions,
   ignoreListFolderStructure,
@@ -23,7 +21,9 @@ export function useFetchSummaryData() {
   const [loading, setLoading] = useState(false);
   const [currentState, setCurrentState] = useState(0);
   const [summaryData, setSummaryData] = useState<FileDescription[]>([]);
-  const [folderStructureDict] = useLocalStorage(folderStructureDictLS, {});
+  const folderStructureDict = useSelector(
+    (state: RootState) => state.folderStructureDictReducer,
+  );
   const markdownValue = useSelector(
     (state: RootState) => state.summaryGenerationReducer,
   );
