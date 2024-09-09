@@ -18,20 +18,21 @@ import store, { RootState } from "../store";
 import { setFolderstructureDict } from "./sections/FolderStructureSection/store/folderStructureDictReducer";
 import Navbar from "@/components/Navbar";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
+import ActionButton from "@/components/ActionButton";
 
 const MainPage = () => {
   const router = useRouter();
   const repoInfo = useSelector((state: RootState) => state.repoReducer);
   const { repoLink, repoName } = repoInfo;
 
-  // if (repoName === "") {
-  //   router.push("./");
-  // }
+  if (repoName === "") {
+    router.push("./");
+  }
 
   useEffect(() => {
     const fetchData = async () => {
       if (repoName === "") {
-        // router.push("./"); // Redirect to home if repoName is empty
+        router.push("./"); // Redirect to home if repoName is empty
       } else {
         try {
           const folderStructureUrl = getFolderStructureDictUrl(repoLink);
@@ -78,6 +79,12 @@ const MainPage = () => {
       <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700"></hr>
       <LicenseSection />
       <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700"></hr>
+      <ActionButton
+        onClick={function (): void {
+          router.push("./result");
+        }}
+        text="Done Editing. Go to Final Preview Page  &rarr;"
+      />
       <ScrollToTopButton />
     </>
   );

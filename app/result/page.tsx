@@ -37,9 +37,9 @@ const ResultPage = () => {
   );
   const license = useSelector((state: RootState) => state.licenseReducer);
 
-  //   if (repoName === "") {
-  //     router.push("./");
-  //   }
+  if (repoName === "") {
+    router.push("./");
+  }
 
   const finalMarkdown =
     projectHeader +

@@ -53,7 +53,7 @@ export const useRepoData = () => {
       store.dispatch(
         setRepo({
           repoName: metadataJson.metadata.name,
-          repoLink: metadataJson.metadata.clone_url,
+          repoLink: inputRepositoryUrl,
         }),
       );
     } catch (error) {

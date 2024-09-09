@@ -41,7 +41,7 @@ export function useFetchSummaryData() {
     // store.dispatch(showSpinner(true));
 
     const updatedData: FileDescription[] = [...summaryData];
-    for (const filepath of fileList.slice(0, 3)) {
+    for (const filepath of fileList) {
       try {
         const summaryGenerationFileUrl = getSummaryGenerationFileUrl(
           repoLink,
@@ -66,6 +66,7 @@ export function useFetchSummaryData() {
 
     setSummaryData(updatedData);
     store.dispatch(setSummaryGeneration(convertToMarkdownTable(updatedData)));
+    setCurrentState(0);
     // store.dispatch(showSpinner(false));
     setLoading(false);
   }, [fileList, repoLink, summaryData]);
