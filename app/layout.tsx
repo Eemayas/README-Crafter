@@ -8,6 +8,8 @@ import "./globals.css";
 import { CustomSpinner } from "@/components/Modals/Modals";
 import ReduxProvider from "@/lib/context/ReduxProvider";
 import ThemeProviders from "@/lib/context/ThemeProviders";
+import { HeroHighlight } from "@/components/ui/hero-highlight";
+import { styles } from "./style";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,12 +26,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ThemeProviders>
-          <ReduxProvider>
-            <CustomSpinner />
-            {children}
-          </ReduxProvider>
-        </ThemeProviders>
+        <HeroHighlight>
+          <ThemeProviders>
+            <ReduxProvider>
+              <CustomSpinner />
+              <main className={`mx-auto max-w-[100rem]`}> {children}</main>
+            </ReduxProvider>
+          </ThemeProviders>
+        </HeroHighlight>
       </body>
     </html>
   );

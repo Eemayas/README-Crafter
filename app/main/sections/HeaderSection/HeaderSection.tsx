@@ -33,7 +33,7 @@ const HeaderSection = () => {
     <MoveUpFadeAnimation>
       <SectionHeader text="Project Header" subtext="header" />
       <div className="w-full">
-        <div className="mx-auto flex w-[30rem] flex-col gap-5">
+        <div className="mx-auto mt-10 flex w-[30rem] flex-col gap-5">
           <DropdownField
             label="Select Project Type"
             options={projectTypeList}

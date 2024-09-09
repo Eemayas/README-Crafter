@@ -15,33 +15,35 @@ const PhotoGallery = () => {
   ];
   return (
     <div className="flex items-center justify-center">
-      {images.map((image, idx) => (
-        <motion.div
-          key={"images" + idx}
-          style={{
-            rotate: Math.random() * 20 - 10,
-          }}
-          whileHover={{
-            scale: 1.1,
-            rotate: 0,
-            zIndex: 100,
-          }}
-          whileTap={{
-            scale: 1.1,
-            rotate: 0,
-            zIndex: 100,
-          }}
-          className="-mr-4 mt-4 flex-shrink-0 overflow-hidden rounded-xl border border-neutral-100 bg-white p-1 dark:border-neutral-700 dark:bg-neutral-800"
-        >
-          <Image
-            src={image}
-            alt="github images"
-            width="500"
-            height="500"
-            className="sm:h-38 sm:w-38 h-20 w-20 flex-shrink-0 rounded-lg object-cover md:h-40 md:w-40 lg:h-48 lg:w-48"
-          />
-        </motion.div>
-      ))}
+      {images
+        .sort(() => Math.random() - 0.5)
+        .map((image, idx) => (
+          <motion.div
+            key={"images" + idx}
+            style={{
+              rotate: Math.random() * 20 - 10,
+            }}
+            whileHover={{
+              scale: 1.1,
+              rotate: 0,
+              zIndex: 100,
+            }}
+            whileTap={{
+              scale: 1.1,
+              rotate: 0,
+              zIndex: 100,
+            }}
+            className="-mr-4 mt-4 flex-shrink-0 overflow-hidden rounded-xl border border-neutral-100 bg-white p-1 dark:border-neutral-700 dark:bg-neutral-800"
+          >
+            <Image
+              src={image}
+              alt="github images"
+              width="500"
+              height="500"
+              className="sm:h-38 sm:w-38 h-20 w-20 flex-shrink-0 rounded-lg object-cover md:h-40 md:w-40 lg:h-48 lg:w-48"
+            />
+          </motion.div>
+        ))}
     </div>
   );
 };

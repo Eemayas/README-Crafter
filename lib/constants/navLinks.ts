@@ -1,18 +1,24 @@
+import { link } from "fs";
+
 export const navLinks = [
   {
-    id: "about",
-    title: "About",
+    id: "howItWorks",
+    title: "How it Works",
+    link: "./",
   },
   {
-    id: "blog",
-    title: "Blogs",
+    id: "templates",
+    title: "Templates",
+    link: "./",
   },
   {
-    id: "projects",
-    title: "Projects",
+    id: "markdownSynatx",
+    title: "Markdown Syntax",
+    link: "https://www.markdownguide.org/basic-syntax/",
   },
   {
     id: "contacts",
     title: "Contacts",
+    link: "https://www.manandharprashant.com.np/contacts",
   },
 ];

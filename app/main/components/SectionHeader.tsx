@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Highlight } from "@/components/ui/hero-highlight";
-import { subTextStyle } from "@/app/style";
+import { styles, subTextStyle } from "@/app/style";
 import { LinkPreview } from "@/components/ui/link-preview";
 import { useSelector } from "react-redux";
 import { RootState } from "@/app/store";
@@ -17,15 +17,19 @@ const SectionHeader: React.FC<{
   return (
     <>
       <h1
-        className={`mx-auto max-w-4xl px-4 text-center text-2xl font-bold leading-relaxed text-black dark:text-white md:text-4xl lg:text-5xl lg:leading-snug ${className}`}
+        className={`${styles.sectionHeadText} ${className} text-center`}
+        // className={`mx-auto max-w-4xl px-4 text-center text-2xl font-bold leading-relaxed text-black dark:text-white md:text-4xl lg:text-5xl lg:leading-snug ${className}`}
       >
-        <Highlight className="text-black dark:text-white">{text}</Highlight>{" "}
+        <Highlight className="px-8 text-black dark:text-white">
+          {text}
+        </Highlight>{" "}
       </h1>
+      {/* <h2 className={`${styles.sectionSubText}`}> */}
       <h2 className={`${subTextStyle}`}>
         Generate the {subtext} of{" "}
         <LinkPreview
           url={repoLink}
-          className="bg-gradient-to-br from-purple-500 to-pink-500 bg-clip-text font-bold text-transparent"
+          className="bg-gradient-to-br from-green-400 to-blue-600 bg-clip-text font-bold text-transparent"
         >
           {repoName}
         </LinkPreview>

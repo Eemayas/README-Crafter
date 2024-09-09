@@ -13,9 +13,9 @@ const Navbar = () => {
   const [toggle, setToogle] = useState(false);
   return (
     <nav
-      className={`${styles.paddingX} bg-background-light dark:bg-background-dark fixed top-0 z-20 flex w-full items-center py-5 opacity-80`}
+      className={`${styles.paddingX} fixed top-0 z-20 flex w-full max-w-[100rem] items-center bg-[#F0F3FE] py-5 opacity-80 dark:bg-[#12212B]`}
     >
-      <div className="mx-auto flex w-full max-w-7xl items-center justify-between">
+      <div className="mx-auto flex w-full items-center justify-between">
         <Link
           href="/"
           className="flex items-center gap-2"
@@ -34,8 +34,7 @@ const Navbar = () => {
             priority
           />
           <p className="text-text-light dark:text-text-dark cursor-pointer text-[18px] font-bold">
-            Prashant
-            <span className="hidden sm:block"> | Computer Engineering</span>
+            README Crafter
           </p>
         </Link>
 
@@ -52,7 +51,7 @@ const Navbar = () => {
                   } cursor-pointer text-[18px] font-medium hover:text-[#915eff]`}
                   onClick={() => setActice(Links.title)}
                 >
-                  <a href={`/${Links.id}`}>{Links.title}</a>
+                  <a href={`${Links.link}`}>{Links.title}</a>
                 </li>
               );
             })}

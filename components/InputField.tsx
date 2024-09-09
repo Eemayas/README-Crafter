@@ -10,43 +10,45 @@ const InputField = ({
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   errorMessage?: string;
-}) => (
-  <div>
-    <label
-      htmlFor="github-repo-link"
-      className={`mb-2 block text-lg font-medium ${
-        errorMessage
-          ? "text-red-700 dark:text-red-500"
-          : "text-neutral-700 dark:text-white"
-      }`}
-    >
-      {label}
-    </label>
-    <input
-      type="text"
-      id="github-repo-link"
-      value={value}
-      onChange={onChange}
-      className={`${errorMessage ? "bg-red-50" : "bg-gray-50"} border ${
-        errorMessage
-          ? "border-red-500 text-red-900 placeholder-red-700"
-          : "border-gray-300 text-gray-900 placeholder-gray-500"
-      } rounded-lg text-sm focus:ring-${
-        errorMessage ? "red-500" : "blue-500"
-      } dark:bg-gray-700 focus:border-${
-        errorMessage ? "red-500" : "blue-500"
-      } block w-full p-2.5 dark:text-${
-        errorMessage ? "red-500" : "gray-300"
-      } dark:placeholder-${errorMessage ? "red-500" : "gray-500"} dark:border-${
-        errorMessage ? "red-500" : "gray-600"
-      }`}
-      placeholder="https://github.com/"
-    />
-    {errorMessage && (
-      <p className="mt-2 text-sm text-red-600 dark:text-red-500">
-        <span className="font-medium">{errorMessage}</span>
-      </p>
-    )}
-  </div>
-);
+}) => {
+  const inputClassNames = `
+  ${
+    errorMessage
+      ? "bg-red-50 border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 focus:border-red-500 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500"
+      : "bg-gray-50 border-gray-300 text-text-light placeholder-gray-500 focus:ring-blue-500 focus:border-blue-500 dark:text-text-dark dark:placeholder-gray-500 dark:border-gray-600"
+  }
+  rounded-lg text-sm block w-full p-2.5 dark:bg-gray-700
+`;
+  return (
+    <div>
+      <label
+        htmlFor="github-repo-link"
+        className={`mb-2 block text-sm font-medium ${
+          errorMessage
+            ? "text-red-700 dark:text-red-500"
+            : "text-text-light dark:text-text-dark"
+        }`}
+      >
+        {label}
+      </label>
+      <input
+        type="text"
+        id="github-repo-link"
+        value={value}
+        onChange={onChange}
+        className={`border ${
+          errorMessage
+            ? "border-red-500 bg-red-50 text-red-900 placeholder-red-700 focus:border-red-500 focus:ring-red-500 dark:border-red-500 dark:text-red-500 dark:placeholder-red-500"
+            : "text-text-light dark:text-text-dark border-gray-300 bg-gray-50 placeholder-gray-500 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:placeholder-gray-500"
+        } block w-full rounded-lg p-2.5 text-sm dark:bg-gray-700`}
+        placeholder="https://github.com/"
+      />
+      {errorMessage && (
+        <p className="mt-2 text-sm text-red-600 dark:text-red-500">
+          <span className="font-medium">{errorMessage}</span>
+        </p>
+      )}
+    </div>
+  );
+};
 export default InputField;
