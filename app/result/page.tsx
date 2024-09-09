@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import dynamic from "next/dynamic";
 import MarkdownEditor from "@uiw/react-markdown-editor";
 import "@/components/editor.css";
+import MarkDownEditor from "@/components/MarkDownEditor";
 const MarkdownEditorImport = dynamic(
   () => import("@uiw/react-markdown-editor").then((mod) => mod.default),
   { ssr: false },
@@ -54,8 +55,11 @@ const ResultPage = () => {
   return (
     <div>
       <Navbar />
-      <MarkdownEditor.Markdown source={finalMarkdown} />
-      <div className="h-7 w-7 bg-red-600"></div>
+      <MarkDownEditor
+        value={finalMarkdown}
+        visible={true}
+        // onChange={(value) => store.dispatch(setLicense(value))}
+      />
     </div>
   );
 };
