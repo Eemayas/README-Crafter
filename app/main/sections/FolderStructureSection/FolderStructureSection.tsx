@@ -19,7 +19,6 @@ const FolderStructureSection = () => {
       <SectionHeader text="Folder Structure 📂📁" subtext="folder structure" />
       <div className="mt-10 flex w-full justify-center px-20">
         <ActionButton
-          className="max-w-80"
           onClick={() => fetchFolderStructureData()}
           text="Generate folder structure &rarr;"
         />

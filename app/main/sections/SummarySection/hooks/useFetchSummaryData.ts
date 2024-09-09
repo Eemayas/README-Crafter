@@ -34,6 +34,7 @@ export function useFetchSummaryData() {
     ignoreListFolderStructure,
     ignoreListExtensions,
   );
+  console.log({fileList})
 
   const fetchSummaryData = useCallback(async () => {
     console.log("Clicked");

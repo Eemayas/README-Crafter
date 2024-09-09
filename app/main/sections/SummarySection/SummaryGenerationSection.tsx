@@ -31,7 +31,6 @@ const SummaryGenerationSection: React.FC = () => {
         />
         <div className="mt-10 flex w-full justify-center px-20">
           <ActionButton
-            className="w-full px-4 sm:w-[30rem]"
             onClick={fetchSummaryData}
             text="Generate summary &rarr;"
           />

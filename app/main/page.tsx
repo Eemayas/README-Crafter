@@ -19,6 +19,7 @@ import { useSelector } from "react-redux";
 import store, { RootState } from "../store";
 import { setFolderstructureDict } from "./sections/FolderStructureSection/store/folderStructureDictReducer";
 import Navbar from "@/components/Navbar";
+import ScrollToTopButton from "@/components/ScrollToTopButton";
 
 const MainPage = () => {
   const router = useRouter();
@@ -79,6 +80,7 @@ const MainPage = () => {
       <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700"></hr>
       <LicenseSection />
       <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700"></hr>
+      <ScrollToTopButton />
     </>
   );
 };

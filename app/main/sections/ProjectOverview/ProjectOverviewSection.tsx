@@ -19,7 +19,6 @@ const ProjectOverviewSection: React.FC = () => {
 
       <div className="mt-10 flex w-full justify-center px-20">
         <ActionButton
-          className="max-w-80"
           onClick={fetchProjectOverviewData}
           text="Generate overview of project &rarr;"
         />

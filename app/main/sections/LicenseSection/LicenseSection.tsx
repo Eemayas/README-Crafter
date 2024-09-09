@@ -17,7 +17,6 @@ const LicenseSection = () => {
 
       <div className="mt-10 flex w-full justify-center px-20">
         <ActionButton
-          className="max-w-80"
           onClick={function (): void {
             fetchLicenseData();
           }}
