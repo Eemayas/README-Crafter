@@ -15,7 +15,6 @@ const ScrollToTopButton = () => {
 
   // Scroll to top when the button is clicked
   const scrollToTop = () => {
-    console.log("Clicked");
     window.scrollTo({
       top: 0,
       behavior: "smooth",

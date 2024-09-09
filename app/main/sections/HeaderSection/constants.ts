@@ -27,6 +27,7 @@ export const initialProjectHeaderMkdr = `<p align="center">
 <img src="https://img.shields.io/badge/Electron-47848F.svg?style=for-the-badge&logo=Electron&logoColor=white" alt="Electron">
 <img src="https://img.shields.io/badge/Next.js-000000.svg?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js">
 </p>
+
 `;
 export const projectTypeList: string[] = [
   "Ecommerce",

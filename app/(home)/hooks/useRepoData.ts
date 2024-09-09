@@ -45,10 +45,10 @@ export const useRepoData = () => {
       const metadataJson = await metadataResponse.json();
       setMetadata(metadataJson);
 
-      // const cloneResponse = await fetch(cloneRepUrl);
-      // const cloneJson = await cloneResponse.json();
-      // setCloneData(cloneJson);
-      // console.log({ metadataJson });
+      const cloneResponse = await fetch(cloneRepUrl);
+      const cloneJson = await cloneResponse.json();
+      setCloneData(cloneJson);
+      console.log({ metadataJson });
 
       store.dispatch(
         setRepo({

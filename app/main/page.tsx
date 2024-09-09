@@ -3,8 +3,6 @@
 import { HeroHighlight } from "@/components/ui/hero-highlight";
 import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import "@uiw/react-markdown-editor/markdown-editor.css";
-import "@uiw/react-markdown-preview/markdown.css";
 import FolderStructureSection from "./sections/FolderStructureSection/FolderStructureSection";
 import HeaderSection from "./sections/HeaderSection/HeaderSection";
 import ProjectOverviewSection from "./sections/ProjectOverview/ProjectOverviewSection";

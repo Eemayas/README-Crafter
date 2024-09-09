@@ -34,7 +34,6 @@ export function useFetchSummaryData() {
     ignoreListFolderStructure,
     ignoreListExtensions,
   );
-  console.log({fileList})
 
   const fetchSummaryData = useCallback(async () => {
     console.log("Clicked");
@@ -42,7 +41,7 @@ export function useFetchSummaryData() {
     // store.dispatch(showSpinner(true));
 
     const updatedData: FileDescription[] = [...summaryData];
-    for (const filepath of fileList) {
+    for (const filepath of fileList.slice(0, 3)) {
       try {
         const summaryGenerationFileUrl = getSummaryGenerationFileUrl(
           repoLink,

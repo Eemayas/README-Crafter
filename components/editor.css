@@ -15,3 +15,38 @@
   padding-left: 10px;
   max-width: calc(95%);
 }
+
+.wmde-markdown ul {
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style: dics !important;
+}
+/* .wmde-markdown ol > .wmde-markdown ul {
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style: circle !important;
+}
+
+.wmde-markdown ol {
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style: decimal !important;
+} */
+
+/* ul {
+  list-style: circle !important;
+  list-style-type: disc !important;
+  padding-left: 20px;}
+
+li {
+  margin-bottom: 10px; 
+}
+li::marker {
+  color: black;
+}
+
+@media (prefers-color-scheme: dark) {
+  li::marker {
+    color: white;
+  }
+} */

@@ -2,8 +2,6 @@
 import dynamic from "next/dynamic";
 import React, { useEffect } from "react";
 import "./editor.css";
-import "@uiw/react-markdown-editor/markdown-editor.css";
-import "@uiw/react-markdown-preview/markdown.css";
 // Dynamically import the Markdown editor component with SSR disabled
 const MarkdownEditorImport = dynamic(
   () => import("@uiw/react-markdown-editor").then((mod) => mod.default),

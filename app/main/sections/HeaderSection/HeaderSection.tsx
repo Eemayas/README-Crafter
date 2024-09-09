@@ -2,9 +2,7 @@
 "use client";
 import React from "react";
 import MoveUpFadeAnimation from "@/components/MoveUpFadeAnimation";
-import ActionButton from "@/components/ActionButton";
-import "@uiw/react-markdown-editor/markdown-editor.css";
-import "@uiw/react-markdown-preview/markdown.css";
+import ActionButton from "@/components/ActionButton";;
 import DropdownField from "@/components/Dropdown";
 import InputField from "@/components/InputField";
 import { projectTypeList } from "./constants";
