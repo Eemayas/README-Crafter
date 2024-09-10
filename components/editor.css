@@ -6,12 +6,13 @@
   background-color: aqua;
 } */
 .cm-line {
-  padding: 5px 2px 5px 6px !important;
+  padding: 2px 2px 2px 6px !important;
   white-space: normal;
   overflow-wrap: break-word;
+  min-height: 1.5rem;
 }
 .cm-content {
-  font-size: large;
+  font-size: medium;
   padding-left: 10px;
   max-width: calc(95%);
 }
@@ -21,7 +22,7 @@
   margin-bottom: 0;
   list-style: dics !important;
 }
-/* .wmde-markdown ol > .wmde-markdown ul {
+.wmde-markdown ol > .wmde-markdown ul {
   margin-top: 0;
   margin-bottom: 0;
   list-style: circle !important;
@@ -31,7 +32,7 @@
   margin-top: 0;
   margin-bottom: 0;
   list-style: decimal !important;
-} */
+}
 
 /* ul {
   list-style: circle !important;

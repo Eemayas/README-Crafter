@@ -6,9 +6,9 @@ import MarkDownEditor from "@/components/MarkDownEditor";
 
 interface ISectionLayoutProps {
   sectionHeaderMainText: string;
-  sectionHeaderSubText: string;
+  sectionHeaderSubText?: string;
   sectionHeaderClassName?: string;
-  actionButtonText: string;
+  actionButtonText?: string;
   actionButtonOnClick: () => void;
   markdownEditorValue: string;
   markdownEditorOnChange: (value: string) => void;
@@ -36,9 +36,14 @@ const SectionLayout: React.FC<ISectionLayoutProps> = ({
           subtext={sectionHeaderSubText}
         />
         {children && <div className="w-full">{children}</div>}
-        <div className="mt-10 flex w-full justify-center px-20">
-          <ActionButton onClick={actionButtonOnClick} text={actionButtonText} />
-        </div>
+        { actionButtonText ? (
+          <div className="mt-10 flex w-full justify-center px-20">
+            <ActionButton
+              onClick={actionButtonOnClick}
+              text={actionButtonText || ""}
+            />
+          </div>
+        ) : null}
         <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700" />
         <MarkDownEditor
           value={markdownEditorValue}
