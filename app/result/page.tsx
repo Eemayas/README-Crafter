@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import Navbar from "@/components/Navbar";
-import dynamic from "next/dynamic";
 import "@/components/editor.css";
 import SectionLayout from "../main/components/SectionLayout";
 

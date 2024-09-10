@@ -1,6 +1,5 @@
 /** @format */
 "use client";
-import { HeroHighlight } from "@/components/ui/hero-highlight";
 import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import FolderStructureSection from "./sections/FolderStructureSection/FolderStructureSection";
@@ -26,15 +25,13 @@ const MainPage = () => {
   const repoInfo = useSelector((state: RootState) => state.repoReducer);
   const { repoLink, repoName } = repoInfo;
 
-  // if (repoName === "") {
-  //   router.push("./");
-  // }
+  if (repoName === "") {
+    router.push("./");
+  }
 
   useEffect(() => {
     const fetchData = async () => {
-      if (repoName === "") {
-        // router.push("./"); // Redirect to home if repoName is empty
-      } else {
+      if (repoName !== "") {
         try {
           const folderStructureUrl = getFolderStructureDictUrl(repoLink);
           await fetch(folderStructureUrl)
