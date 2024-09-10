@@ -20,18 +20,24 @@
 .wmde-markdown ul {
   margin-top: 0;
   margin-bottom: 0;
-  list-style: dics !important;
-}
-.wmde-markdown ol > .wmde-markdown ul {
-  margin-top: 0;
-  margin-bottom: 0;
-  list-style: circle !important;
+  list-style: disc;
 }
 
-.wmde-markdown ol {
+.wmde-markdown li > ul {
   margin-top: 0;
   margin-bottom: 0;
-  list-style: decimal !important;
+  list-style: circle;
+}
+
+ol.wmde-markdown {
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style: decimal;
+}
+ol {
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style: decimal;
 }
 
 /* ul {

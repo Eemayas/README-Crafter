@@ -14,7 +14,7 @@ export default function Home() {
     <div className="grid min-h-screen items-center">
       <MoveUpFadeAnimation>
         <h1
-          className={`${styles.sectionHeadText} text-text-light dark:text-text-dark text-center`}
+          className={`${styles.sectionHeadText} text-center text-text-light dark:text-text-dark`}
         >
           {/* <h1 c lassName="mx-auto max-w-4xl px-4 text-center text-2xl font-bold leading-relaxed text-black dark:text-white md:text-4xl lg:text-5xl lg:leading-snug"> */}
           Create your perfect{" "}

@@ -36,7 +36,7 @@ const SectionLayout: React.FC<ISectionLayoutProps> = ({
           subtext={sectionHeaderSubText}
         />
         {children && <div className="w-full">{children}</div>}
-        { actionButtonText ? (
+        {actionButtonText ? (
           <div className="mt-10 flex w-full justify-center px-20">
             <ActionButton
               onClick={actionButtonOnClick}
@@ -46,6 +46,8 @@ const SectionLayout: React.FC<ISectionLayoutProps> = ({
         ) : null}
         <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700" />
         <MarkDownEditor
+          maxHeight={"100vh"}
+          minHeight={"50vh"}
           value={markdownEditorValue}
           visible={true}
           className={markdownClassName}

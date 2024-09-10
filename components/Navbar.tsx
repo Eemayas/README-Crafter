@@ -33,13 +33,13 @@ const Navbar = () => {
             loading="eager"
             priority
           />
-          <p className="text-text-light dark:text-text-dark cursor-pointer text-[18px] font-bold">
+          <p className="cursor-pointer text-[18px] font-bold text-text-light dark:text-text-dark">
             README Crafter
           </p>
         </Link>
 
         <div className="flex gap-10">
-          <ul className="hidden list-none flex-row gap-10 md:flex">
+          <ul className="hidden list-none flex-row gap-10 lg:flex">
             {navLinks.map((Links) => {
               return (
                 <li
@@ -57,9 +57,9 @@ const Navbar = () => {
             })}
           </ul>
 
-          <div className="flex flex-1 items-center justify-end md:hidden">
+          <div className="flex flex-1 items-center justify-end lg:hidden">
             <Menu as="div" className="relative inline-block text-left">
-              <div onClick={() => setToogle(true)}>
+              <div onClick={() => setToogle(!toggle)}>
                 <Menu.Button aria-label="Small Screen navbar">
                   {!toggle ? <MenuIcons /> : <CloseIcons />}
                 </Menu.Button>
