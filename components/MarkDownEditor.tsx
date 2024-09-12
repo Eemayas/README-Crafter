@@ -3,6 +3,9 @@ import React, { Suspense } from "react";
 import dynamic from "next/dynamic";
 import "./editor.css";
 
+import { useEffect } from "react";
+import { useTheme } from "next-themes";
+
 // Dynamically import the Markdown editor component with SSR disabled
 const MarkdownEditorImport = dynamic(
   () => import("@uiw/react-markdown-editor").then((mod) => mod.default),
@@ -27,29 +30,24 @@ const MarkDownEditor: React.FC<MarkDownEditorProps> = ({
   onChange,
   ...rest
 }) => {
+  const { theme } = useTheme();
+  useEffect(() => {
+    document.documentElement.setAttribute("data-color-mode", theme || "light");
+  }, [theme]);
+
   return (
-    <Suspense
-      fallback={
-        <div
-          className={`fixed inset-0 z-50 flex min-h-[50vh] items-center justify-center overflow-y-auto overflow-x-hidden outline-none backdrop-blur-sm focus:outline-none`}
-        >
-          <div className="relative mx-auto my-6 w-auto max-w-3xl">
-            <div className="h-24 w-24 rounded-full border-b-8 border-t-8 border-gray-200"></div>
-            <div className="absolute left-0 top-0 h-24 w-24 animate-spin rounded-full border-b-8 border-t-8 border-blue-500"></div>
-          </div>
-        </div>
-      }
-    >
+    <div className="min-h-[75vh]">
       <MarkdownEditorImport
         height={height}
         value={value}
+        enableScroll={false}
         {...rest}
         visible={visible}
         onChange={(value, viewUpdate) => {
           onChange && onChange(value);
         }}
       />
-    </Suspense>
+    </div>
   );
 };
 

@@ -9,7 +9,6 @@ import { CustomSpinner } from "@/components/Modals/Modals";
 import ReduxProvider from "@/lib/context/ReduxProvider";
 import ThemeProviders from "@/lib/context/ThemeProviders";
 import { HeroHighlight } from "@/components/ui/hero-highlight";
-import { styles } from "./style";
 
 const inter = Inter({ subsets: ["latin"] });
 

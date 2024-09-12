@@ -25,9 +25,9 @@ const MainPage = () => {
   const repoInfo = useSelector((state: RootState) => state.repoReducer);
   const { repoLink, repoName } = repoInfo;
 
-  if (repoName === "") {
-    router.push("./");
-  }
+  // if (repoName === "") {
+  //   router.push("./");
+  // }
 
   useEffect(() => {
     const fetchData = async () => {
