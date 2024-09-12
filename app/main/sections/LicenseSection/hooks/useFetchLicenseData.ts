@@ -9,6 +9,7 @@ import { setLicense } from "../store/licenseReducer";
 
 export function useFetchLicenseData() {
   const { repoLink } = useSelector((state: RootState) => state.repoReducer);
+  const baseUrl = useSelector((state: RootState) => state.baseUrlReducer);
 
   const licenseMarkdownValue = useSelector(
     (state: RootState) => state.licenseReducer,
@@ -17,7 +18,7 @@ export function useFetchLicenseData() {
     store.dispatch(showSpinner(true));
 
     try {
-      const licenseUrl = getLicenseUrl(repoLink);
+      const licenseUrl = getLicenseUrl(repoLink, baseUrl);
 
       const response = await fetch(licenseUrl);
       const data = await response.json();

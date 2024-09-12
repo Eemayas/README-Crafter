@@ -12,12 +12,13 @@ export function useFetchFolderStructureData() {
   const folderStructureMarkdownValue = useSelector(
     (state: RootState) => state.folderStructureReducer,
   );
+  const baseUrl = useSelector((state: RootState) => state.baseUrlReducer);
 
   const fetchFolderStructureData = useCallback(async () => {
     store.dispatch(showSpinner(true));
 
     try {
-      const folderStructureUrl = getFolderStructureUrl(repoLink);
+      const folderStructureUrl = getFolderStructureUrl(repoLink, baseUrl);
 
       const response = await fetch(folderStructureUrl);
       const data = await response.json();

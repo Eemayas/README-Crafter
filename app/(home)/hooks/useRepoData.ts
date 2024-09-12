@@ -2,13 +2,14 @@
 import { useState } from "react";
 import { setRepo } from "../store/repoReducer";
 import { getCloneRepoUrl, getMetaDataUrl } from "@/lib/constants/apiEndpoints";
-import store from "@/app/store";
+import store, { RootState } from "@/app/store";
+import { useSelector } from "react-redux";
 
 export const useRepoData = () => {
   const [metadata, setMetadata] = useState(null);
   const [cloneData, setCloneData] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
-
+  const baseUrl = useSelector((state: RootState) => state.baseUrlReducer);
   const validateGitHubLink = (value: string) => {
     const githubUrlPattern = /^https:\/\/github\.com\/[\w-]+\/[\w-]+\/?$/;
     return githubUrlPattern.test(value);
@@ -38,8 +39,9 @@ export const useRepoData = () => {
 
   const fetchData = async (inputRepositoryUrl: string) => {
     try {
-      const metadataUrl = getMetaDataUrl(inputRepositoryUrl);
-      const cloneRepUrl = getCloneRepoUrl(inputRepositoryUrl);
+      const metadataUrl = getMetaDataUrl(inputRepositoryUrl, baseUrl);
+      const cloneRepUrl = getCloneRepoUrl(inputRepositoryUrl, baseUrl);
+      console.log({ metadata, cloneData });
 
       const metadataResponse = await fetch(metadataUrl);
       const metadataJson = await metadataResponse.json();

@@ -19,21 +19,26 @@ import Navbar from "@/components/Navbar";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 import ActionButton from "@/components/ActionButton";
 import Footer from "@/components/Footer";
+import { showUrlQuery } from "@/components/Modals/store/ModalReducer";
 
 const MainPage = () => {
   const router = useRouter();
   const repoInfo = useSelector((state: RootState) => state.repoReducer);
   const { repoLink, repoName } = repoInfo;
+  const baseUrl = useSelector((state: RootState) => state.baseUrlReducer);
 
-  // if (repoName === "") {
-  //   router.push("./");
-  // }
+  if (repoName === "") {
+    router.push("./");
+  }
 
   useEffect(() => {
     const fetchData = async () => {
       if (repoName !== "") {
         try {
-          const folderStructureUrl = getFolderStructureDictUrl(repoLink);
+          const folderStructureUrl = getFolderStructureDictUrl(
+            repoLink,
+            baseUrl,
+          );
           await fetch(folderStructureUrl)
             .then(async (folderStructureDictResponse) => {
               const folderStructureDictJson =
@@ -86,7 +91,7 @@ const MainPage = () => {
         />
       </div>{" "}
       <Footer />{" "}
-      <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700"></hr>
+      <hr className="h-[2px] border-0 bg-gray-500 dark:bg-gray-700"></hr>
       <ScrollToTopButton />
     </>
   );

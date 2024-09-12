@@ -11,12 +11,13 @@ export function useFetchContributingGuideData() {
   const contributingGuideMarkdownValue = useSelector(
     (state: RootState) => state.contributingGuideReducer,
   );
+  const baseUrl = useSelector((state: RootState) => state.baseUrlReducer);
 
   const fetchContributingGuideData = useCallback(async () => {
     store.dispatch(showSpinner(true));
 
     try {
-      const contributingGuideUrl = getContributingGuideUrl(repoLink);
+      const contributingGuideUrl = getContributingGuideUrl(repoLink, baseUrl);
 
       const response = await fetch(contributingGuideUrl);
       const data = await response.json();

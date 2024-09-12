@@ -2,6 +2,7 @@
 
 import { configureStore } from "@reduxjs/toolkit";
 import modalReducer from "@/components/Modals/store/ModalReducer";
+import baseUrlReducer from "@/components/Modals/store/BaseUrlReducer";
 import repoReducer from "@/app/(home)/store/repoReducer";
 import folderStructureReducer from "@/app/main/sections/FolderStructureSection/store/folderStructureReducer";
 import contributingGuideReducer from "@/app/main/sections/ContributingGuideSection/store/ContributingGuideReducer";
@@ -17,6 +18,7 @@ import folderStructureDictReducer from "@/app/main/sections/FolderStructureSecti
 const store = configureStore({
   reducer: {
     modal: modalReducer,
+    baseUrlReducer,
     repoReducer,
     summaryGenerationReducer,
     projectHeaderReducer,

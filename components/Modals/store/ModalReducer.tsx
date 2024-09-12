@@ -6,6 +6,9 @@ import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 export interface SpinnerState {
   isShow: boolean;
 }
+export interface UrlQueryState {
+  isShow: boolean;
+}
 
 interface ModalState {
   isShow: boolean;
@@ -15,6 +18,7 @@ interface ModalState {
 
 interface ModalSliceState {
   spinner: SpinnerState;
+  urlQuery: UrlQueryState;
   successModal: ModalState;
   errorModal: ModalState;
 }
@@ -22,6 +26,7 @@ interface ModalSliceState {
 // Initial state
 const initialState: ModalSliceState = {
   spinner: { isShow: false },
+  urlQuery: { isShow: false },
   successModal: {
     isShow: false,
     title: "Success",
@@ -55,6 +60,9 @@ const modalSlice = createSlice({
     showSpinner: (state: ModalSliceState, action: PayloadAction<boolean>) => {
       state.spinner.isShow = action.payload;
     },
+    showUrlQuery: (state: ModalSliceState, action: PayloadAction<boolean>) => {
+      state.urlQuery.isShow = action.payload;
+    },
     showSuccessModal: (
       state: ModalSliceState,
       action: PayloadAction<Partial<ModalState>>,
@@ -84,7 +92,7 @@ const modalSlice = createSlice({
 });
 
 // Export actions
-export const { showSpinner, showSuccessModal, showErrorModal } =
+export const { showSpinner, showUrlQuery, showSuccessModal, showErrorModal } =
   modalSlice.actions;
 
 // Export reducer

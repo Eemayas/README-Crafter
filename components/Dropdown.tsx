@@ -27,17 +27,16 @@ const DropdownField: React.FC<DropdownFieldProps> = ({
     <div className={`${className}`}>
       <label
         htmlFor="dropdown"
-        className={`text-text-light dark:text-text-dark mb-2 block text-sm font-medium`}
+        className={`mb-2 block text-sm font-medium text-text-light dark:text-text-dark`}
       >
         {label}
       </label>
-
 
       <select
         id="dropdown"
         value={selectedOption}
         onChange={handleSelect}
-        className={`dark:text-text-dark text-text-light block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm placeholder-gray-500 focus:border-blue-500 focus:ring-blue-50 dark:border-gray-600 dark:bg-gray-700 dark:placeholder-gray-500`}
+        className={`block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-text-light placeholder-gray-500 focus:border-blue-500 focus:ring-blue-50 dark:border-gray-600 dark:bg-gray-700 dark:text-text-dark dark:placeholder-gray-500`}
       >
         {options.map((option, index) => (
           <option key={index} value={option}>

@@ -12,12 +12,13 @@ export function useFetchProjectInstallationGuideData() {
   const projectInstallationGuideMarkdownValue = useSelector(
     (state: RootState) => state.projectInstallationGuideReducer,
   );
+  const baseUrl = useSelector((state: RootState) => state.baseUrlReducer);
 
   const fetchProjectInstallationGuideData = useCallback(async () => {
     store.dispatch(showSpinner(true));
 
     try {
-      const keyFeatureUrl = getProjectInstallationGuideUrl(repoLink);
+      const keyFeatureUrl = getProjectInstallationGuideUrl(repoLink, baseUrl);
 
       const response = await fetch(keyFeatureUrl);
       const data = await response.json();

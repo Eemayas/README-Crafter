@@ -12,12 +12,13 @@ export function useFetchKeyFeatureData() {
   const keyFeatureMarkdownValue = useSelector(
     (state: RootState) => state.keyFeaturesReducer,
   );
+  const baseUrl = useSelector((state: RootState) => state.baseUrlReducer);
 
   const fetchKeyFeatureData = useCallback(async () => {
     store.dispatch(showSpinner(true));
 
     try {
-      const keyFeatureUrl = getKeyFeatureUrl(repoLink);
+      const keyFeatureUrl = getKeyFeatureUrl(repoLink, baseUrl);
 
       const response = await fetch(keyFeatureUrl);
       const data = await response.json();

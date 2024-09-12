@@ -5,11 +5,13 @@ const InputField = ({
   value,
   onChange,
   errorMessage,
+  placeholder = "https://github.com/",
 }: {
   label: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   errorMessage?: string;
+  placeholder?: string;
 }) => {
   const inputClassNames = `
   ${
@@ -39,9 +41,9 @@ const InputField = ({
         className={`border ${
           errorMessage
             ? "border-red-500 bg-red-50 text-red-900 placeholder-red-700 focus:border-red-500 focus:ring-red-500 dark:border-red-500 dark:text-red-500 dark:placeholder-red-500"
-            : "text-text-light dark:text-text-dark border-gray-300 bg-gray-50 placeholder-gray-500 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:placeholder-gray-500"
+            : "border-gray-300 bg-gray-50 text-text-light placeholder-gray-500 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:text-text-dark dark:placeholder-gray-500"
         } block w-full rounded-lg p-2.5 text-sm dark:bg-gray-700`}
-        placeholder="https://github.com/"
+        placeholder={placeholder}
       />
       {errorMessage && (
         <p className="mt-2 text-sm text-red-600 dark:text-red-500">

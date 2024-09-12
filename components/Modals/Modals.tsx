@@ -1,9 +1,13 @@
 /** @format */
 
 "use client";
-import { RootState } from "@/app/store";
-import React from "react";
-import { useSelector } from "react-redux";
+import store, { RootState } from "@/app/store";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import InputField from "../InputField";
+import ActionButton from "../ActionButton";
+import { showUrlQuery } from "./store/ModalReducer";
+import { setBaseUrl } from "./store/BaseUrlReducer";
 
 export const CustomSpinner = () => {
   const modalInfos = useSelector((state: RootState) => state.modal);
@@ -27,6 +31,55 @@ export const CustomSpinner = () => {
     </>
   );
 };
+
+export const UserInputModal = () => {
+  const dispatch = useDispatch();
+  const modalInfos = useSelector((state: RootState) => state.modal);
+  const [userInput, setUserInput] = useState<string>("");
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUserInput(e.target.value);
+  };
+
+  const handleSubmit = () => {
+    // Dispatch your action to close the modal and send the input
+    console.log("User Input: ", userInput);
+
+    dispatch(setBaseUrl(userInput));
+    dispatch(showUrlQuery(false));
+  };
+
+  return (
+    <>
+      <div
+        className={`fixed inset-0 z-50 items-center justify-center overflow-y-auto overflow-x-hidden outline-none backdrop-blur-sm focus:outline-none ${
+          modalInfos.urlQuery.isShow ? "flex" : "hidden"
+        } `}
+      >
+        <div
+          className={`rounded-[10px] bg-gradient-to-br from-green-400 to-blue-600 p-[2px] text-gray-900 hover:text-white dark:text-white`}
+        >
+          <div className="relative h-full w-auto max-w-3xl rounded-lg bg-white p-6">
+            <InputField
+              label={"Enter the API URL"}
+              value={userInput}
+              onChange={handleInputChange}
+              placeholder="www.api-endpoint.com"
+            />
+            <div className="gap-5 pt-5">
+              <ActionButton onClick={handleSubmit} text={"Set Url"} />
+              <ActionButton
+                onClick={() => store.dispatch(showUrlQuery(false))}
+                text={"Cancel"}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
 // export const SucessModal = () => {
 //   // To call the Sucess Modal
 //   // const dispatch = useDispatch();

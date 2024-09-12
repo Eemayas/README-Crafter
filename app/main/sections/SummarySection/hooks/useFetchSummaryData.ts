@@ -24,6 +24,7 @@ export function useFetchSummaryData() {
   const folderStructureDict = useSelector(
     (state: RootState) => state.folderStructureDictReducer,
   );
+  const baseUrl = useSelector((state: RootState) => state.baseUrlReducer);
   const markdownValue = useSelector(
     (state: RootState) => state.summaryGenerationReducer,
   );
@@ -45,6 +46,7 @@ export function useFetchSummaryData() {
       try {
         const summaryGenerationFileUrl = getSummaryGenerationFileUrl(
           repoLink,
+          baseUrl,
           filepath,
         );
         console.log({ filepath, summaryGenerationFileUrl });

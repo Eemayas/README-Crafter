@@ -12,12 +12,13 @@ export function useFetchContributorsData() {
   const contributorsMarkdownValue = useSelector(
     (state: RootState) => state.contributorsReducer,
   );
+  const baseUrl = useSelector((state: RootState) => state.baseUrlReducer);
 
   const fetchContributorsData = useCallback(async () => {
     store.dispatch(showSpinner(true));
 
     try {
-      const contributorsUrl = getContributorsUrl(repoLink);
+      const contributorsUrl = getContributorsUrl(repoLink, baseUrl);
 
       const response = await fetch(contributorsUrl);
       const data = await response.json();

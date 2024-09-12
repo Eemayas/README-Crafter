@@ -12,12 +12,13 @@ export function useFetchProjectOverviewData() {
   const projectOverviewMarkdownValue = useSelector(
     (state: RootState) => state.projectOverviewReducer,
   );
+  const baseUrl = useSelector((state: RootState) => state.baseUrlReducer);
 
   const fetchProjectOverviewData = useCallback(async () => {
     store.dispatch(showSpinner(true));
 
     try {
-      const projectOverviewUrl = getProjectOverviewUrl(repoLink);
+      const projectOverviewUrl = getProjectOverviewUrl(repoLink, baseUrl);
 
       const response = await fetch(projectOverviewUrl);
       const data = await response.json();

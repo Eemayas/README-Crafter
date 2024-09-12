@@ -35,7 +35,7 @@ const HeaderSection: React.FC = () => {
       markdownClassName="h-[50vh]"
     >
       <div className="w-full">
-        <div className="mx-auto mt-10 flex w-[30rem] flex-col gap-5">
+        <div className="mx-auto mt-10 flex flex-col gap-5 px-5 md:w-[30rem]">
           <DropdownField
             label="Select Project Type"
             options={projectTypeList}

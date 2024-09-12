@@ -27,7 +27,7 @@ const Navbar = () => {
           <Image
             alt="logo"
             className="border-black-100 border-1 rounded-full"
-            src={"/assets/logo-no-background.webp"}
+            src={"/assets/README-Crafter.png"}
             width={50}
             height={50}
             loading="eager"

@@ -16,7 +16,7 @@ import { setHeader } from "../store/headerReducer";
 
 export function useFetchHeaderData() {
   const { repoLink } = useSelector((state: RootState) => state.repoReducer);
-
+  const baseUrl = useSelector((state: RootState) => state.baseUrlReducer);
   const [selectedOption, setSelectedOption] = useState<string>(
     projectTypeList[0],
   );
@@ -31,12 +31,13 @@ export function useFetchHeaderData() {
     // Define URLs
     const projectIconUrl = getProjectIconUrl(
       repoLink,
+      baseUrl,
       projectTypeList.findIndex((option) => option === selectedOption) + 1,
       inputProjectImageUrl,
     );
-    const projectNameUrl = getProjectNameUrl(repoLink);
-    const projectBadgeUrl = getProjectBadgeUrl(repoLink);
-    const projectLanguageUrl = getProjectLanguageUrl(repoLink);
+    const projectNameUrl = getProjectNameUrl(repoLink, baseUrl);
+    const projectBadgeUrl = getProjectBadgeUrl(repoLink, baseUrl);
+    const projectLanguageUrl = getProjectLanguageUrl(repoLink, baseUrl);
 
     const fetchData = async (url: string) => {
       try {

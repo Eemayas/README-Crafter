@@ -48,27 +48,28 @@ const ResultPage = () => {
    ${contributors}\n
    ${license}\n`);
   return (
-    <div>
+    <>
       <Navbar />
-      <div className="mt-28"></div>
-      <SectionLayout
-        sectionHeaderMainText={"Final Preview"}
-        markdownEditorValue={finalMarkdown}
-        markdownEditorOnChange={(value: string) => {
-          setFinalMarkdown(value);
-        }}
-        actionButtonOnClick={function (): void {
-          throw new Error("Function not implemented.");
-        }}
-      />
-      <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700"></hr>
-      <MarkdownDownloadButton
-        finalMarkdown={finalMarkdown}
-        fileName={`${repoName}.md`}
-      />
-      <Footer />{" "}
-      <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700"></hr>
-    </div>
+      <div className="pt-28">
+        <SectionLayout
+          sectionHeaderMainText={"Final Preview"}
+          markdownEditorValue={finalMarkdown}
+          markdownEditorOnChange={(value: string) => {
+            setFinalMarkdown(value);
+          }}
+          actionButtonOnClick={function (): void {
+            throw new Error("Function not implemented.");
+          }}
+        />
+        <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700"></hr>
+        <MarkdownDownloadButton
+          finalMarkdown={finalMarkdown}
+          fileName={`${repoName}.md`}
+        />
+        <Footer />{" "}
+        <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700"></hr>
+      </div>
+    </>
   );
 };
 
