@@ -32,7 +32,7 @@ export const CustomSpinner = () => {
   );
 };
 
-export const UserInputModal = () => {
+export const BaseUrlEntryModal = () => {
   const dispatch = useDispatch();
   const modalInfos = useSelector((state: RootState) => state.modal);
   const [userInput, setUserInput] = useState<string>("");
@@ -57,18 +57,23 @@ export const UserInputModal = () => {
         } `}
       >
         <div
-          className={`rounded-[10px] bg-gradient-to-br from-green-400 to-blue-600 p-[2px] text-gray-900 hover:text-white dark:text-white`}
+          className={`rounded-[10px] bg-gradient-to-br from-green-400 to-blue-600 p-[2px] text-gray-900 hover:text-white dark:text-white md:w-[30rem]`}
         >
           <div className="relative h-full w-auto max-w-3xl rounded-lg bg-white p-6">
             <InputField
-              label={"Enter the API URL"}
+              label={"Enter the API URL: "}
               value={userInput}
               onChange={handleInputChange}
               placeholder="www.api-endpoint.com"
             />
-            <div className="gap-5 pt-5">
-              <ActionButton onClick={handleSubmit} text={"Set Url"} />
+            <div className="flex gap-x-4 pt-5">
               <ActionButton
+                className="flex-grow"
+                onClick={handleSubmit}
+                text={"Set Url"}
+              />
+              <ActionButton
+                className="flex-grow"
                 onClick={() => store.dispatch(showUrlQuery(false))}
                 text={"Cancel"}
               />

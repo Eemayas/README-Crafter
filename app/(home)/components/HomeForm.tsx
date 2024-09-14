@@ -5,9 +5,14 @@ import React, { useState } from "react";
 import InputField from "@/components/InputField";
 import ActionButton from "@/components/ActionButton";
 import { useRepoData } from "../hooks/useRepoData";
-import { showSpinner } from "@/components/Modals/store/ModalReducer";
-import store from "@/app/store";
+import {
+  showSpinner,
+  showUrlQuery,
+} from "@/components/Modals/store/ModalReducer";
+import store, { RootState } from "@/app/store";
 import { useRouter } from "next/navigation";
+import { useSelector } from "react-redux";
+import { Root } from "postcss";
 
 const HomeForm = () => {
   const router = useRouter();
@@ -18,6 +23,7 @@ const HomeForm = () => {
     fetchData,
     setErrorMessage,
   } = useRepoData();
+  const baseUrl = useSelector((state: RootState) => state.baseUrlReducer);
   const [inputRepositoryUrl, setInputRepositoryUrl] = useState("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -43,18 +49,38 @@ const HomeForm = () => {
     store.dispatch(showSpinner(false));
   };
   return (
-    <form
-      className="flex w-full flex-col justify-center gap-3 px-8 sm:w-[30rem]"
-      onSubmit={handleSubmit}
-    >
-      <InputField
-        label="GitHub Repo Link"
-        value={inputRepositoryUrl}
-        onChange={(e) => setInputRepositoryUrl(e.target.value)}
-        errorMessage={errorMessage}
-      />
-      <ActionButton text="Get going &rarr;" onClick={() => {}} />
-    </form>
+    <div className="flex flex-col">
+      <form
+        className="flex w-full flex-col justify-center gap-3 px-8 sm:w-[30rem]"
+        onSubmit={handleSubmit}
+      >
+        <InputField
+          label="GitHub Repo Link"
+          value={inputRepositoryUrl}
+          onChange={(e) => setInputRepositoryUrl(e.target.value)}
+          errorMessage={errorMessage}
+        />
+        <ActionButton text="Get going &rarr;" onClick={() => {}} />
+      </form>
+      <div className="text-sm text-gray-500 dark:text-gray-500">
+        Currently API point set at:{" "}
+        <a
+          href={baseUrl}
+          className="font-bold text-blue-400 underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {baseUrl}
+        </a>
+        . Wrong Url?{" "}
+        <a
+          className="cursor-pointer font-bold text-blue-400 underline"
+          onClick={() => store.dispatch(showUrlQuery(true))}
+        >
+          Change it
+        </a>
+      </div>
+    </div>
   );
 };
 

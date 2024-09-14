@@ -5,7 +5,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { CustomSpinner, UserInputModal } from "@/components/Modals/Modals";
+import { CustomSpinner, BaseUrlEntryModal } from "@/components/Modals/Modals";
 import ReduxProvider from "@/lib/context/ReduxProvider";
 import ThemeProviders from "@/lib/context/ThemeProviders";
 import { HeroHighlight } from "@/components/ui/hero-highlight";
@@ -31,7 +31,7 @@ export default function RootLayout({
           <ThemeProviders>
             <ReduxProvider>
               <CustomSpinner />
-              <UserInputModal />
+              <BaseUrlEntryModal />
               <main className={`mx-auto max-w-[100rem]`}> {children}</main>
             </ReduxProvider>
           </ThemeProviders>

@@ -8,11 +8,9 @@ import PhotoGallery from "./components/PhotoGallery";
 import HomeForm from "./components/HomeForm";
 import { Highlight } from "@/components/ui/hero-highlight";
 import { styles } from "../style";
-import store from "../store";
 import { showUrlQuery } from "@/components/Modals/store/ModalReducer";
 
 export default function Home() {
-  store.dispatch(showUrlQuery(true));
   return (
     <div className="grid min-h-screen items-center">
       <MoveUpFadeAnimation>
