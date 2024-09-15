@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import Navbar from "@/components/Navbar";
@@ -9,6 +9,8 @@ import SectionLayout from "../main/components/SectionLayout";
 
 import Footer from "@/components/Footer";
 import MarkdownDownloadButton from "@/components/MarkdownDownloadButton";
+import formatMarkdown from "@/lib/utils/formatMarkdown";
+import { Toc } from "@/lib/utils/generateTableOfContents";
 
 const ResultPage = () => {
   const router = useRouter();
@@ -40,13 +42,32 @@ const ResultPage = () => {
   const license = useSelector((state: RootState) => state.licenseReducer);
 
   const [finalMarkdown, setFinalMarkdown] = useState(`${projectHeader}\n
-   ${projectOverview}\n
-   ${keyFeatures}\n
-   ${folderStructure}\n
-   ${installationGuide}\n
-   ${contributingGuide}\n
-   ${contributors}\n
-   ${license}\n`);
+${projectOverview}\n
+${keyFeatures}\n
+${folderStructure}\n
+${installationGuide}\n
+${contributingGuide}\n
+${contributors}\n
+${license}\n`);
+
+  useEffect(() => {
+    const tocGenerator = new Toc(false, [1, 6], "");
+    tocGenerator.parseMarkdown(finalMarkdown);
+    console.log(tocGenerator.generateToc("-", 2, true));
+    const tableOFContentAdded = `${projectHeader}\n
+${projectOverview}\n
+# Table of Content\n
+${tocGenerator.generateToc("-", 2, true)}\n
+${keyFeatures}\n
+${folderStructure}\n
+${installationGuide}\n
+${contributingGuide}\n
+${contributors}\n
+${license}\n`;
+    // const formatedMarkdown = formatMarkdown(tableOFContentAdded);
+    setFinalMarkdown(tableOFContentAdded);
+  }, []);
+
   return (
     <>
       <Navbar />

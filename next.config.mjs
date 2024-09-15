@@ -5,10 +5,19 @@
 
 const nextConfig = {
   images: {
-    domains: [
-      "images.unsplash.com",
-      "assets.aceternity.com",
-      "api.microlink.io",
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "assets.aceternity.com",
+      },
+      {
+        protocol: "https",
+        hostname: "api.microlink.io",
+      },
     ],
   },
 };

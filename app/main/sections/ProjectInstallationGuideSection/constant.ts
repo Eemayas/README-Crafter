@@ -1,11 +1,8 @@
 /** @format */
 
-export const initialProjectGuideMkdr = `**Getting Started**
-================
+export const initialProjectGuideMkdr = `# Getting Started
 
-Welcome to the Daraz Scraper installation guide! This guide will walk you through the process of setting up the project on your local machine.
-
-**Prerequisites**
+## Prerequisites
 ================
 
 Before installing the project, make sure you have the following software and tools installed:
@@ -15,16 +12,16 @@ Before installing the project, make sure you have the following software and too
 * Docker (for testing purposes) - [Download](https://www.docker.com/get-started)
 * MongoDB (database) - [Download](https://www.mongodb.com/try/download/community)
 
-**Setup Instructions**
+## Setup Instructions
 =====================
 
-### Step 1: Clone the Repository
+**Step 1: Clone the Repository**
 
 Clone the Daraz Scraper repository from GitHub using the following command:
 \`\`\`bash
 git clone https://github.com/Eemayas/Daraz_Scraper.git
 \`\`\`
-### Step 2: Install Dependencies
+**Step 2: Install Dependencies**
 
 Navigate to the project directory and install dependencies using yarn:
 \`\`\`bash
@@ -33,7 +30,7 @@ yarn install
 \`\`\`
 This will take a few minutes to complete.
 
-### Step 3: Configure Environment Variables
+**Step 3: Configure Environment Variables**
 
 Create a new file called \`.env\` in the root directory of the project. Add the following environment variables:
 \`\`\`makefile
@@ -42,7 +39,7 @@ API_KEY=your_api_key_here
 \`\`\`
 Replace \`your_api_key_here\` with your actual API key.
 
-### Step 4: Build and Start the Project
+**Step 4: Build and Start the Project**
 
 Run the following command to build and start the project:
 \`\`\`bash
@@ -50,9 +47,8 @@ yarn dev
 \`\`\`
 This will start the development server, which you can access at [http://localhost:3000](http://localhost:3000).
 
-**Running the Project**
+## Running the Project
 =====================
-
 To run the project in production mode, use the following command:
 \`\`\`bash
 yarn build
@@ -60,7 +56,7 @@ yarn start
 \`\`\`
 This will create a static HTML file and serve it using \`next.js\`.
 
-**Tests**
+## Tests
 ========
 
 The project uses Jest for testing. To run tests, navigate to the root directory of the project and run the following command:
@@ -68,7 +64,7 @@ The project uses Jest for testing. To run tests, navigate to the root directory 
 yarn test
 \`\`\`
 
-**Troubleshooting**
+## Troubleshooting
 ==================
 
 ### Common Issues
