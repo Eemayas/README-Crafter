@@ -218,8 +218,8 @@ Readme-Gen-Frontend/
     └── Modals/
         ├── Modals.tsx
         └── store/
-├── ModalReducer.tsx
-└── BaseUrlReducer.tsx
+            ├── ModalReducer.tsx
+            └── BaseUrlReducer.tsx
 
 52 directories, 109 files
 ```
