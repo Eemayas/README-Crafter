@@ -59,7 +59,7 @@ export const BaseUrlEntryModal = () => {
         <div
           className={`rounded-[10px] bg-gradient-to-br from-green-400 to-blue-600 p-[2px] text-gray-900 hover:text-white dark:text-white md:w-[30rem]`}
         >
-          <div className="relative h-full w-auto max-w-3xl rounded-lg bg-white p-6">
+          <div className="relative h-full w-auto max-w-3xl rounded-lg bg-white p-6 dark:bg-black">
             <InputField
               label={"Enter the API URL: "}
               value={userInput}
