@@ -80,6 +80,28 @@ const HomeForm = () => {
           Change it
         </a>
       </div>
+      <div className="text-sm text-gray-500 dark:text-gray-500">
+        Run the Flask Server either in local by cloning repo from{" "}
+        <a
+          href={"https://github.com/Eemayas/README-Crafter-Flask-Server"}
+          className="font-bold text-blue-400 underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub
+        </a>{" "}
+          or in{" "}
+        <a
+          className="cursor-pointer font-bold text-blue-400 underline"
+          href={
+            "https://colab.research.google.com/drive/17xqM5mYzgA3jsJ9oyga-j5-GDQuJg56k"
+          }
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Collab.
+        </a>
+      </div>
     </div>
   );
 };

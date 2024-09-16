@@ -230,36 +230,71 @@ Readme-Gen-Frontend/
 
 Before starting with the installation process, ensure that you have the following software and tools installed:
 
-1. **Node.js**: Download the latest version from the official Node.js website: <https://nodejs.org/en/download/>
+1. **Node.js**: Download the latest version from the official Node.js website:  
+   <https://nodejs.org/en/download/>
 2. **npm (Node Package Manager)**: This comes bundled with Node.js.
-3. **yarn**: Install yarn using npm by running `npm install -g yarn`.
+3. **yarn**: Install yarn using npm by running:  
+   `npm install -g yarn`
 4. **git**: Ensure you have git installed on your system.
-5. **README Crafter Flask Server**: Ensure to run this flask server either in local device by cloning it from [GitHub](https://github.com/Eemayas/README-Crafter-Flask-Server) or running on [Google Collab](https://colab.research.google.com/drive/17xqM5mYzgA3jsJ9oyga-j5-GDQuJg56k)
-1. **Docker** (optional): If you plan to use Docker for development, ensure it's installed and set up properly.
+5. **README Crafter Flask Server**: Ensure to run this Flask server either locally by cloning it from [GitHub](https://github.com/Eemayas/README-Crafter-Flask-Server) or running it on [Google Colab](https://colab.research.google.com/drive/17xqM5mYzgA3jsJ9oyga-j5-GDQuJg56k).
+6. **Docker** (optional): If you plan to use Docker for development, ensure it's installed and set up properly.
 
 You can also check out the official documentation for setting up these tools:
 
-* Node.js: <https://nodejs.org/en/docs/>
-* yarn: <https://yarnpkg.com/lang/en/docs/install>
-* git: <https://git-scm.com/book/en/v2/Getting-Started-Installing-Git>
+- **Node.js**: <https://nodejs.org/en/docs/>
+- **yarn**: <https://yarnpkg.com/lang/en/docs/install>
+- **git**: <https://git-scm.com/book/en/v2/Getting-Started-Installing-Git>
 
 ## Installation
 
 To install the project, follow these steps:
 
-1. **Clone the repository**: Run `git clone https://github.com/Eemayas/Readme-Gen-Frontend.git` in your terminal.
-2. **Navigate to the project directory**: Change into the newly cloned project directory using `cd Readme-Gen-Frontend`.
-3. **Install dependencies**: Run `yarn install` or `npm install` to fetch all the required packages.
-4. **Build the project**: Execute `yarn build` or `npm run build` to compile the project.
+1. **Clone the repository**:  
+   Run the following command in your terminal:  
+   ```bash
+   git clone https://github.com/Eemayas/Readme-Gen-Frontend.git
+   ```
+2. **Navigate to the project directory**:  
+   Change into the newly cloned project directory:  
+   ```bash
+   cd Readme-Gen-Frontend
+   ```
+3. **Install dependencies**:  
+   Run one of the following commands to fetch all the required packages:  
+   ```bash
+   yarn install
+   ```
+   or  
+   ```bash
+   npm install
+   ```
+4. **Build the project**:  
+   Execute one of these commands to compile the project:  
+   ```bash
+   yarn build
+   ```
+   or  
+   ```bash
+   npm run build
+   ```
 
 ## Running the Project
 
 To run the project locally:
 
-1. **Start the development server**: Run `yarn dev` or `npm start` in your terminal.
-2. **Open the app**: Visit <http://localhost:3000/> in your browser to see the running application.
-3. **Setting up the API point**: If you are running flask server in collab, then place the API endpoint from the collab by clicking the text-button at the bottom of the landing page  
-
+1. **Start the development server**:  
+   Run one of the following commands in your terminal:  
+   ```bash
+   yarn dev
+   ```
+   or  
+   ```bash
+   npm start
+   ```
+2. **Open the app**:  
+   Visit <http://localhost:3000/> in your browser to see the running application.
+3. **Setting up the API point**:  
+   If you are running the Flask server in Colab, set the API endpoint from the Colab environment by clicking the text button at the bottom of the landing page.
 
    
 # Contributing
