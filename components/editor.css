@@ -1,15 +1,8 @@
-/* .md-editor-preview {
-  height: fit-content;
-}
-.md-editor-content {
-  height: "100%";
-  background-color: aqua;
-} */
 .cm-line {
   padding: 2px 2px 2px 6px !important;
-  white-space: normal;
-  overflow-wrap: break-word;
   min-height: 1.5rem;
+  white-space: pre-wrap; /* Preserves spaces and wraps text */
+  word-wrap: break-word; /* Ensures long words break to a new line */
 }
 .cm-content {
   font-size: medium;
@@ -39,21 +32,3 @@ ol {
   margin-bottom: 0;
   list-style: decimal;
 }
-
-/* ul {
-  list-style: circle !important;
-  list-style-type: disc !important;
-  padding-left: 20px;}
-
-li {
-  margin-bottom: 10px; 
-}
-li::marker {
-  color: black;
-}
-
-@media (prefers-color-scheme: dark) {
-  li::marker {
-    color: white;
-  }
-} */
