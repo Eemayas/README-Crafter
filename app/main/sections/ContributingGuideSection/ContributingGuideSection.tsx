@@ -23,25 +23,6 @@ const ContributingGuideSection = () => {
       }}
       markdownClassName={"h-screen"}
     />
-    // <MoveUpFadeAnimation>
-    //   <SectionHeader text="Contributing Guide" subtext={"contributing guide"} />
-
-    //   <div className="mt-10 flex w-full justify-center px-20">
-    //     <ActionButton
-    //       onClick={function (): void {
-    //         fetchContributingGuideData();
-    //       }}
-    //       text="Generate contributing guide of project &rarr;"
-    //     />
-    //   </div>
-    //   <hr className="my-8 h-[2px] border-0 bg-gray-500 dark:bg-gray-700"></hr>
-    //   <MarkDownEditor
-    //     value={contributingGuideMarkdownValue}
-    //     visible={true}
-    //     className="h-screen"
-    //     onChange={(value) => store.dispatch(setContributingGuide(value))}
-    //   />
-    // </MoveUpFadeAnimation>
   );
 };
 export default ContributingGuideSection;

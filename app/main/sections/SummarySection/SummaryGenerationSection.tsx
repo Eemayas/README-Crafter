@@ -2,12 +2,8 @@
 
 import React from "react";
 import { useFetchSummaryData } from "./hooks/useFetchSummaryData";
-import MoveUpFadeAnimation from "@/components/MoveUpFadeAnimation";
-import SectionHeader from "../../components/SectionHeader";
-import ActionButton from "@/components/ActionButton";
 import { MultiStepLoader as Loader } from "@/components/ui/multi-step-loader";
 import { IconSquareRoundedX } from "@tabler/icons-react";
-import MarkDownEditor from "@/components/MarkDownEditor";
 import store from "@/app/store";
 import { setSummaryGeneration } from "./store/summaryGenerationReducer";
 import SectionLayout from "@/app/main/components/SectionLayout";
