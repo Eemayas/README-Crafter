@@ -32,7 +32,7 @@ const markdownData = {
     { name: "Package1", url: "http://package1.url" },
     { name: "Package2", url: "http://package2.url" },
   ],
-  related_projects:  [
+  related_projects: [
     {
       name: "Related Project 1",
       url: "http://related1.url",
@@ -40,6 +40,16 @@ const markdownData = {
     },
     {
       name: "Related Project 2",
+      url: "http://related2.url",
+      description: "Description of Related Project 2",
+    },
+    {
+      name: "Related Project 3",
+      url: "http://related1.url",
+      description: "Description of Related Project 1",
+    },
+    {
+      name: "Related Project 4",
       url: "http://related2.url",
       description: "Description of Related Project 2",
     },
